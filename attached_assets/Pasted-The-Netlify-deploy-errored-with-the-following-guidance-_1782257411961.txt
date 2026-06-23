@@ -1,0 +1,73 @@
+The Netlify deploy errored, with the following guidance provided:
+
+Diagnosis
+- The install failed because pnpm is running with a frozen lockfile and the lockfile is out of sync with package.json. See the frozen-lockfile error at [line 21](#L21).
+- The log shows the concrete mismatch: a dependency was removed in package.json but still present in pnpm-lock.yaml: [line 24](#L24).
+- Netlify exits the build due to the install failure: [line 26](#L26) and the final failure lines [line 26-L28](#L26-L28).
+
+Cause
+- package.json (or workspace package.json) and the committed pnpm-lock.yaml are inconsistent. In this case @workspace/api-client-react was removed/changed in package.json but pnpm-lock.yaml still references it, and CI runs with frozen-lockfile enabled by default so installation is blocked.
+
+Solution
+Preferred fix — update and commit the lockfile
+1. Verify the package change is intentional: check your root and workspace package.json files to confirm @workspace/api-client-react was removed (or should still exist).
+2. On your local machine (at the repo root) run:
+```bash
+pnpm install
+# or, if you only want to refresh the lockfile without installing node_modules:
+pnpm install --lockfile-only
+```
+This will update pnpm-lock.yaml to match package.json.
+3. Commit and push the updated lockfile:
+```bash
+git add pnpm-lock.yaml
+git commit -m "Update pnpm-lock.yaml to match package.json"
+git push
+```
+4. Re-trigger the Netlify build.
+
+Alternative temporary/workaround — allow CI to ignore frozen-lockfile
+- If you cannot update and commit the lockfile right away, you can instruct CI to run without frozen-lockfile. Two options:
+  - Change your Netlify build command to run pnpm without frozen lock:
+    ```bash
+    pnpm install --no-frozen-lockfile
+    # then continue your normal build command
+    ```
+  - Or set the PNPM_FLAGS environment variable in Netlify build settings:
+    PNPM_FLAGS="--no-frozen-lockfile"
+
+Notes
+- The correct long-term fix is to keep pnpm-lock.yaml committed and in sync with package.json; disabling frozen-lockfile in CI hides the underlying inconsistency.
+- If you are using workspaces, run the commands at the repository root so the workspace lockfile is regenerated correctly.
+
+The relevant error logs are:
+
+Line 0: build-image version: cbbb2660d860fe70694043ec05851a3910a2bf39 (noble-new-builds)
+Line 1: buildbot version: d9608268fa3784a91ae99b736382b065f0910292
+Line 2: Fetching cached dependencies
+Line 3: Failed to fetch cache, continuing with build
+Line 4: Starting to prepare the repo for build
+Line 5: No cached dependencies found. Cloning fresh repo
+Line 6: git clone --filter=blob:none https://github.com/NerochazeDev/Nerochaze-tools
+Line 7: Preparing Git Reference refs/heads/main
+Line 8: Installing dependencies
+Line 9: mise ~/.config/mise/config.toml tools: python@3.14.3
+Line 10: mise ~/.config/mise/config.toml tools: ruby@3.4.8
+Line 11: mise ~/.config/mise/config.toml tools: go@1.26.2
+Line 12: Downloading and installing node v22.23.1...
+Line 13: Downloading https://nodejs.org/dist/v22.23.1/node-v22.23.1-linux-x64.tar.xz...
+Line 15: Checksums matched!
+Line 16: Now using node v22.23.1 (npm v10.9.8)
+Line 17: Enabling Node.js Corepack
+Line 18: pnpm workspaces detected
+Line 19: Installing npm packages using pnpm version 10.30.3
+Line 20: Scope: all 2 workspace projects
+Line 21:  ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with <ROOT>/artifact
+Line 22: Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install 
+Line 23:   Failure reason:
+Line 24:   specifiers in the lockfile don't match specifiers in package.json:
+* 1 dependencies were removed: @workspace/api-client-react@
+Line 25: Error during pnpm install
+Line 26: Failing build: Failed to install dependencies
+Line 27: Finished processing build request in 7.52s
+Line 28: Failed during stage 'Install dependencies': dependency_installation script returned non-zero exit code: 1
