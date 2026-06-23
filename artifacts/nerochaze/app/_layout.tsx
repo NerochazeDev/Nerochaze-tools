@@ -29,8 +29,7 @@ function RootLayoutNav() {
       }}
     >
       <Stack.Screen name="index" />
-      <Stack.Screen name="prompt/[id]" />
-      <Stack.Screen name="script/[id]" />
+      <Stack.Screen name="content/[id]" />
     </Stack>
   );
 }
