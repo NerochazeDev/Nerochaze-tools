@@ -1,0 +1,18 @@
+
+> "Build a 100% purely static frontend web application for my digital hub called 'Nerochaze Creative Labs.'
+> **CRITICAL ARCHITECTURE REQUIREMENT:** Do NOT build a backend database, server, or admin control panel. The entire site must run dynamically off a single, clean static data file (such as a centralized data.js or tools.json file) containing an array of tool objects. I will manually update this array directly on GitHub when adding content.
+> ### 1. Visual Aesthetic (Figma-Inspired Design)
+>  * **Colors:** Deep off-black / dark charcoal background (#111111). Clean white text with muted gray descriptions (#AAAAAA). Use a bright Figma accent color like vibrant purple (#8C52FF) purely for interactive states, borders, and buttons.
+>  * **Styling:** Sharp minimalist UI using the 'Inter' or sans-serif typography font stack. Apply sharp corner radii (6px to 8px) to cards. Use pixel-perfect hairline borders (1px solid #222222). Hover states should have a subtle, smooth scale transition (scale(1.01)).
+> ### 2. The Structured Component Workflow
+>  * **The Homepage Layout:** Features a professional branding header 'Nerochaze Creative Labs' and a real-time, instant search bar. Below the header, display a responsive grid of component cards pulling natively from the static data file.
+>  * **The Component Cards:** Each card must cleanly display the name of the tool (e.g., 'YouTube Viral Shorts Replicator for All Niches'), a short description, and category tag badges (e.g., #AI-Prompts or #Python-Scripts).
+>  * **The Deep-Dive Page View:** When a user taps or clicks any card on the grid, seamlessly swap the view (or open a dedicated clean layout page) to display the dynamic resource page for that tool, displaying the following elements in a clean vertical flow:
+>    1. **Top Ad Zone:** A clearly labeled placeholder container: <!-- ADSTERRA NATIVE BANNER UP -->.
+>    2. **Usage Instructions Section:** A clean vertical section displaying step-by-step documentation from A to Z on how to configure and execute the asset.
+>    3. **Middle Ad Zone:** Right under the text instructions, place a second labeled container: <!-- ADSTERRA NATIVE BANNER MIDDLE -->.
+>    4. **The Premium CTA Button:** Directly below the middle ad, build a prominent high-contrast download button labeled: '📥 Download Free Prompt Matrix' (for prompts) or '📥 Download Free Automation Script' (for Python tools). This button must fetch and route users to an external URL redirect string (which I will fill with ShrinkMe.io or Google Sheets links inside my data file).
+>    5. **Bottom Ad Zone:** Placed at the very baseline footer of the page container: <!-- ADSTERRA NATIVE BANNER BOTTOM -->.
+> ### 3. The Code Customization Template
+> Ensure that inside the core code comments or within a separate README.md file, you write out a clean, empty boilerplate object schema template matching the layout of your data array. It should clearly show me how to format the Title, Description, Step-by-Step Instructions, and the Redirect Download URL string so that I can easily copy, fill, and append new entries to the static codebase myself on GitHub."
+> 
