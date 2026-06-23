@@ -12,23 +12,16 @@ function parseHash(): View {
   return { type: "home" };
 }
 
-/* ─────────────────────────────────────────────────────────────
-   ADSTERRA SOCIAL BAR
-   Replace the contents of this component with your Adsterra
-   Social Bar script tag once you have your placement code.
-   The Social Bar floats at the bottom of every page.
-───────────────────────────────────────────────────────────── */
+/*
+  ADSTERRA SOCIAL BAR
+  ─────────────────────────────────────────────────────────
+  When you have your Social Bar code from Adsterra, paste
+  the <script> tag inside this component. Adsterra injects
+  its own floating element automatically — nothing extra
+  needed on our side.
+*/
 function SocialBar() {
-  return (
-    <div
-      className="ncl-social-bar"
-      aria-label="Advertisement"
-      role="complementary"
-    >
-      {/* ADSTERRA SOCIAL BAR — paste your script tag here */}
-      <span className="ncl-social-bar-label">[ Adsterra Social Bar ]</span>
-    </div>
-  );
+  return <div id="adsterra-social-bar" aria-hidden="true" />;
 }
 
 export default function App() {
@@ -40,20 +33,12 @@ export default function App() {
     return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
 
-  const navigateTo = (id: string) => {
-    window.location.hash = `/tool/${id}`;
-  };
-
-  const navigateHome = () => {
-    window.location.hash = "/";
-  };
+  const navigateTo = (id: string) => { window.location.hash = `/tool/${id}`; };
+  const navigateHome = () => { window.location.hash = "/"; };
 
   if (view.type === "detail") {
     const tool = TOOLS.find((t) => t.id === view.id);
-    if (!tool) {
-      navigateHome();
-      return null;
-    }
+    if (!tool) { navigateHome(); return null; }
     return (
       <>
         <DetailPage tool={tool} onBack={navigateHome} />

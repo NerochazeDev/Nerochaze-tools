@@ -25,19 +25,33 @@ function IconSearch() {
   );
 }
 
-/* ── Logo mark SVG ─────────────────────────────────────────── */
+/* ── Logo mark ──────────────────────────────────────────────── */
 function LogoMark({ size = 34 }: { size?: number }) {
   return (
     <svg className="ncl-logomark" width={size} height={size} viewBox="0 0 34 34" fill="none">
       <defs>
-        <linearGradient id="ncl-lg" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#A855F7" />
-          <stop offset="100%" stopColor="#6B2FCC" />
+        <linearGradient id="ncl-logo-grad" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse">
+          <stop offset="0%"   stopColor="#B57BFF" />
+          <stop offset="50%"  stopColor="#8C52FF" />
+          <stop offset="100%" stopColor="#5B1FCC" />
+        </linearGradient>
+        <linearGradient id="ncl-logo-n" x1="10" y1="9" x2="24" y2="25" gradientUnits="userSpaceOnUse">
+          <stop offset="0%"   stopColor="rgba(255,255,255,0.98)" />
+          <stop offset="100%" stopColor="rgba(220,195,255,0.85)" />
         </linearGradient>
       </defs>
-      <rect width="34" height="34" rx="9" fill="url(#ncl-lg)" />
+      {/* Rounded square background */}
+      <rect width="34" height="34" rx="9.5" fill="url(#ncl-logo-grad)" />
+      {/* Subtle inner light at top */}
+      <rect width="34" height="17" rx="9.5" fill="url(#ncl-logo-grad)" opacity="0.3" />
       {/* N letterform */}
-      <path d="M10 25V9L24 25V9" stroke="white" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M10 25V9L24 25V9"
+        stroke="url(#ncl-logo-n)"
+        strokeWidth="2.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -48,9 +62,7 @@ function ContentCard({ tool, onClick }: { tool: Tool; onClick: () => void }) {
     <button className="ncl-card" onClick={onClick} aria-label={`View ${tool.title}`}>
       <div className="ncl-card-header">
         <div className={`ncl-card-icon ${tool.type}`} aria-hidden>
-          {tool.type === "prompt"
-            ? <IconCPU />
-            : <IconTerminal />}
+          {tool.type === "prompt" ? <IconCPU /> : <IconTerminal />}
         </div>
         <span className={`ncl-type-badge ${tool.type}`}>
           {tool.type === "prompt" ? "Prompt Matrix" : "Bot Script"}
@@ -70,9 +82,9 @@ function ContentCard({ tool, onClick }: { tool: Tool; onClick: () => void }) {
 
 /* ── HomePage ───────────────────────────────────────────────── */
 export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) => void }) {
-  const [search, setSearch] = useState("");
+  const [search, setSearch]     = useState("");
   const [activeType, setActiveType] = useState<"all" | "prompt" | "script">("all");
-  const [activeTag, setActiveTag] = useState<string | null>(null);
+  const [activeTag, setActiveTag]   = useState<string | null>(null);
 
   const filtered = useMemo(() => {
     let items = TOOLS;
@@ -91,8 +103,8 @@ export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) 
     return items;
   }, [search, activeType, activeTag]);
 
-  const prompts = filtered.filter((t) => t.type === "prompt");
-  const scripts = filtered.filter((t) => t.type === "script");
+  const prompts      = filtered.filter((t) => t.type === "prompt");
+  const scripts      = filtered.filter((t) => t.type === "script");
   const totalPrompts = TOOLS.filter((t) => t.type === "prompt").length;
   const totalScripts = TOOLS.filter((t) => t.type === "script").length;
 
@@ -129,35 +141,30 @@ export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) 
       </header>
 
       {/* ══════════════════════════════════════
-          HERO — brand statement
+          HERO — premium brand statement
       ══════════════════════════════════════ */}
       <section className="ncl-hero" aria-label="Nerochaze Creative Labs">
         <div className="ncl-container">
           <div className="ncl-hero-inner">
 
-            {/* Platform badge */}
             <div className="ncl-hero-badge" aria-hidden>
               <span className="ncl-hero-badge-dot" />
               AI Tools Platform
             </div>
 
-            {/* Wordmark */}
             <div className="ncl-wordmark-wrap">
-              <span className="ncl-wordmark-main">NEROCHAZE</span>
+              <span className="ncl-wordmark-main" aria-label="NEROCHAZE">NEROCHAZE</span>
               <span className="ncl-wordmark-sub">Creative&nbsp;Labs</span>
             </div>
 
-            {/* Gradient rule */}
             <hr className="ncl-hero-rule" aria-hidden />
 
-            {/* Tagline */}
             <p className="ncl-hero-tagline">
               <strong>Premium AI Prompt Matrices</strong> and{" "}
               <strong>Automation Bot Scripts</strong> for builders,
               creators, and operators.
             </p>
 
-            {/* Stat pills */}
             <div className="ncl-stat-pills" role="region" aria-label="Release counts">
               <div className="ncl-stat-pill">
                 <div className="ncl-stat-pill-val">{totalPrompts}</div>
@@ -176,7 +183,6 @@ export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) 
         </div>
       </section>
 
-      {/* Gradient divider under hero */}
       <div className="ncl-hero-fade" aria-hidden />
 
       {/* ══════════════════════════════════════
@@ -185,7 +191,6 @@ export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) 
       <main className="ncl-content">
         <div className="ncl-container">
 
-          {/* Filters */}
           <div className="ncl-filters" role="group" aria-label="Filter content">
             {(["all", "prompt", "script"] as const).map((f) => (
               <button
@@ -210,7 +215,6 @@ export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) 
             ))}
           </div>
 
-          {/* AI Prompt Matrices */}
           {prompts.length > 0 && (
             <>
               <div className="ncl-section-head">
@@ -228,7 +232,6 @@ export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) 
             </>
           )}
 
-          {/* Automation Bot Scripts */}
           {scripts.length > 0 && (
             <>
               <div className="ncl-section-head">
@@ -246,7 +249,6 @@ export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) 
             </>
           )}
 
-          {/* Empty state */}
           {filtered.length === 0 && (
             <div className="ncl-empty">
               <div style={{ fontSize: "2.5rem", marginBottom: "14px" }}>🔍</div>
@@ -257,16 +259,13 @@ export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) 
         </div>
       </main>
 
-      {/* ══════════════════════════════════════
-          FOOTER
-      ══════════════════════════════════════ */}
       <footer className="ncl-footer">
         <div className="ncl-container">
           <div className="ncl-footer-brand">
             <LogoMark size={20} />
             <span className="ncl-footer-name">NEROCHAZE</span>
           </div>
-          <p>Creative Labs — AI Prompts & Automation Scripts</p>
+          <p>Creative Labs — AI Prompts &amp; Automation Scripts</p>
         </div>
       </footer>
     </div>

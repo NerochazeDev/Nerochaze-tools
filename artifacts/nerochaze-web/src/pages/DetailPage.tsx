@@ -277,8 +277,6 @@ export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () =>
         <p>Nerochaze Creative Labs — AI Prompts & Automation Scripts</p>
       </footer>
 
-      {/* Social bar bottom padding so content isn't hidden */}
-      <div style={{ height: "56px" }} aria-hidden />
     </div>
   );
 }
