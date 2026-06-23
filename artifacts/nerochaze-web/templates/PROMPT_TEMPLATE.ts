@@ -8,14 +8,37 @@
 //   3. Copy the object between the ↓↓↓ markers below
 //   4. Open:  src/data.ts
 //   5. Paste the object at the TOP of the TOOLS array
-//      (on the blank line right below the comment that says "Paste new tools HERE")
-//   6. Save  src/data.ts  — done. Your prompt is now live on the website.
+//      (on the blank line right below the comment "Paste new tools HERE")
+//   6. Save  src/data.ts  — your prompt is live on the website immediately
+//
+// ─────────────────────────────────────────────────────────────────────
+// HOW ADS ARE PLACED ON YOUR DETAIL PAGE
+// (You don't configure these here — they are automatic from DetailPage.tsx)
+//
+//   [ ADSTERRA NATIVE BANNER — TOP ]        ← above Step 1
+//   Step 1
+//   Step 2
+//   Step 3  ← end of first half
+//   [ ADSTERRA NATIVE BANNER — MID STEPS ]  ← between step halves
+//   Step 4  ← start of second half
+//   Step 5
+//   Step 6  ← end of last step
+//   [ ADSTERRA NATIVE BANNER — MIDDLE ]     ← after all steps
+//   (Section B — Free Sample code block)
+//   (Section C — Download button)
+//   [ ADSTERRA NATIVE BANNER — BOTTOM ]     ← below download button
+//   [ ADSTERRA SOCIAL BAR ]                 ← sticky floating bar (all pages)
+//
+//   To replace any placeholder with real Adsterra code:
+//   Open  src/pages/DetailPage.tsx  and look for the <AdZone> component.
+//   For the Social Bar, open  src/App.tsx  and look for <SocialBar>.
+// ─────────────────────────────────────────────────────────────────────
 //
 // RULES:
-//   • id        → lowercase, hyphens only, must be globally unique (e.g. "gpt4-cold-email-matrix")
-//   • tags      → hashtag format, add as many as you like
-//   • sampleCode→ use backtick template literals for multi-line prompts (already done below)
-//   • instructions → numbered steps the user follows to actually use this prompt
+//   • id        → lowercase, hyphens only, must be globally unique
+//   • tags      → hashtag format, keep #AI-Prompts as first tag
+//   • sampleCode→ use backtick template literals for multi-line prompts
+//   • instructions → each string = one numbered step on the page
 //
 // =====================================================================
 
@@ -29,28 +52,29 @@
 
   description:
     "ONE OR TWO SENTENCES describing what this prompt does and who it is built for.",
-  // ↑ Shown on the card and the detail page header
 
   category: "AI Prompt Matrices",
   // ↑ Do not change this line for prompt templates
 
   tags: ["#AI-Prompts", "#ADD-TAG-2", "#ADD-TAG-3"],
-  // ↑ Hashtag format. Remove or add as many tags as needed.
-  //   Keep #AI-Prompts as the first tag for consistency.
+  // ↑ Always keep #AI-Prompts first. Add or remove as many tags as needed.
 
   type: "prompt",
   // ↑ Do not change this line for prompt templates
 
   instructions: [
-    "Prerequisites: LIST WHICH AI MODEL(S) WORK WITH THIS PROMPT (e.g. GPT-4, Claude 3.5, Gemini Pro).",
-    "DESCRIBE THE FIRST THING THE USER DOES TO PREPARE (e.g. 'Open a fresh conversation in ChatGPT').",
-    "DESCRIBE THE NEXT STEP (e.g. 'Copy the sample prompt from Section B below').",
-    "EXPLAIN ANY VARIABLES TO REPLACE (e.g. 'Replace [TOPIC] with your niche and [AUDIENCE] with who you are writing for').",
+    // ── FIRST HALF (these steps show ABOVE the mid-steps ad) ──────────
+    "Prerequisites: LIST WHICH AI MODEL(S) WORK WITH THIS PROMPT.",
+    "DESCRIBE THE FIRST THING THE USER DOES TO PREPARE.",
+    "DESCRIBE THE NEXT STEP.",
+    // ── SECOND HALF (these steps show BELOW the mid-steps ad) ─────────
+    "EXPLAIN ANY VARIABLES THE USER NEEDS TO REPLACE.",
     "DESCRIBE WHAT TO EXPECT AS OUTPUT.",
-    "OPTIONAL: ADD HOW TO ITERATE OR IMPROVE THE RESULTS.",
+    "OPTIONAL: HOW TO ITERATE OR IMPROVE RESULTS.",
   ],
   // ↑ Each string in this array becomes one numbered step on the detail page.
-  //   Add or remove strings as needed. Keep each step short and clear.
+  //   The list is split in half — an ad banner appears between the two halves.
+  //   Add or remove strings freely. Keep each step short and clear.
 
   sampleCode: `PASTE YOUR FULL PROMPT TEXT HERE.
 

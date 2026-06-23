@@ -805,5 +805,36 @@
 /* Divider */
 .ncl-divider        { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 36px 0; }
 
+/* ════════════════════════════════════════════════════════════
+   ADSTERRA SOCIAL BAR — sticky floating bottom bar
+   Replace the contents of .ncl-social-bar in App.tsx with
+   your actual Adsterra Social Bar <script> tag.
+════════════════════════════════════════════════════════════ */
+.ncl-social-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  background: rgba(10, 8, 20, 0.96);
+  border-top: 1px solid rgba(140, 82, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.5);
+}
+.ncl-social-bar-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.15);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  pointer-events: none;
+  user-select: none;
+}
+
 /* ── Utilities ─────────────────────────────────────────────── */
 input[type="search"]::-webkit-search-cancel-button { display: none; }

@@ -14,6 +14,7 @@ const SCRIPT_FEATURES = [
   "Step-by-step deployment guide",
 ];
 
+/* ── Copy button ─────────────────────────────────────────────── */
 function CopyButton({ code }: { code: string }) {
   const [copied, setCopied] = useState(false);
 
@@ -23,8 +24,7 @@ function CopyButton({ code }: { code: string }) {
     } catch {
       const ta = document.createElement("textarea");
       ta.value = code;
-      ta.style.position = "fixed";
-      ta.style.opacity = "0";
+      ta.style.cssText = "position:fixed;opacity:0";
       document.body.appendChild(ta);
       ta.select();
       document.execCommand("copy");
@@ -56,7 +56,8 @@ function CopyButton({ code }: { code: string }) {
   );
 }
 
-function PromptIcon({ type }: { type: Tool["type"] }) {
+/* ── Type icon ───────────────────────────────────────────────── */
+function TypeIcon({ type }: { type: Tool["type"] }) {
   if (type === "prompt") {
     return (
       <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -72,14 +73,31 @@ function PromptIcon({ type }: { type: Tool["type"] }) {
   );
 }
 
+/* ── Ad zone component ───────────────────────────────────────── */
+function AdZone({ label, comment }: { label: string; comment: string }) {
+  return (
+    <div className="ncl-ad-zone" aria-label="Advertisement">
+      {/* {comment} */}
+      {label}
+    </div>
+  );
+}
+
+/* ── Detail page ─────────────────────────────────────────────── */
 export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () => void }) {
   const isPrompt = tool.type === "prompt";
   const features = isPrompt ? PROMPT_FEATURES : SCRIPT_FEATURES;
   const sampleLang = isPrompt ? "PROMPT" : "PYTHON";
 
+  /* Split instructions: first half → ad → second half */
+  const midpoint = Math.ceil(tool.instructions.length / 2);
+  const stepsTop    = tool.instructions.slice(0, midpoint);
+  const stepsBottom = tool.instructions.slice(midpoint);
+
   return (
     <div className="ncl-page">
-      {/* ── Sticky nav ── */}
+
+      {/* ── Sticky nav ─────────────────────────────────────────── */}
       <header className="ncl-detail-header">
         <div className="ncl-container">
           <div className="ncl-detail-header-inner">
@@ -89,19 +107,20 @@ export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () =>
               </svg>
               Back
             </button>
-            <span className="ncl-detail-crumb" aria-label="Category">{tool.category}</span>
+            <span className="ncl-detail-crumb">{tool.category}</span>
           </div>
         </div>
       </header>
 
       <main className="ncl-detail-content">
-        {/* ── Hero ── */}
+
+        {/* ── Hero ───────────────────────────────────────────────── */}
         <div className="ncl-hero-block">
           <div className="ncl-hero-icon-row">
             <div className={`ncl-hero-icon ${tool.type}`} aria-hidden>
-              <PromptIcon type={tool.type} />
+              <TypeIcon type={tool.type} />
             </div>
-            <span className={`ncl-type-badge ${tool.type}`} style={{ padding: "4px 12px", borderRadius: "20px", fontSize: "0.75rem" }}>
+            <span className={`ncl-type-badge ${tool.type}`} style={{ padding: "4px 13px", borderRadius: "20px", fontSize: "0.72rem" }}>
               {isPrompt ? "AI Prompt Matrix" : "Automation Bot Script"}
             </span>
           </div>
@@ -114,51 +133,61 @@ export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () =>
           </div>
         </div>
 
-        {/* ════════════════════════════════════
+        {/* ════════════════════════════════════════════════════════
             SECTION A — Technical Guide
-        ════════════════════════════════════ */}
+        ════════════════════════════════════════════════════════ */}
         <section aria-labelledby="section-a-heading">
           <div className="ncl-section-label">
             <span className="ncl-section-badge a">Section A</span>
             <h2 id="section-a-heading" className="ncl-section-title">Technical Guide</h2>
           </div>
 
-          {/* <!-- ADSTERRA NATIVE BANNER UP --> */}
-          <div className="ncl-ad-zone" aria-label="Advertisement placeholder">
-            {/* ADSTERRA NATIVE BANNER UP */}
-            [ Ad Zone — Top Banner ]
-          </div>
+          {/* ADSTERRA NATIVE BANNER — TOP */}
+          <AdZone label="[ Ad Zone — Top Banner ]" comment="ADSTERRA NATIVE BANNER TOP" />
 
+          {/* Steps — first half */}
           <div className="ncl-instructions-card">
-            <ol className="ncl-step-list" aria-label="Step-by-step instructions">
-              {tool.instructions.map((step, i) => (
+            <ol className="ncl-step-list" aria-label="Step-by-step instructions (part 1)">
+              {stepsTop.map((step, i) => (
                 <li key={i} className="ncl-step">
                   <span className="ncl-step-num" aria-hidden>{i + 1}</span>
-                  <span className="ncl-step-text">
-                    {step.replace(/^Step\s+\d+:\s*/i, "")}
-                  </span>
+                  <span className="ncl-step-text">{step.replace(/^Step\s+\d+:\s*/i, "")}</span>
                 </li>
               ))}
             </ol>
           </div>
 
-          {/* <!-- ADSTERRA NATIVE BANNER MIDDLE --> */}
-          <div className="ncl-ad-zone" aria-label="Advertisement placeholder">
-            {/* ADSTERRA NATIVE BANNER MIDDLE */}
-            [ Ad Zone — Middle Banner ]
-          </div>
+          {/* ADSTERRA NATIVE BANNER — MID STEPS (shown between step halves) */}
+          <AdZone label="[ Ad Zone — Mid-Steps Banner ]" comment="ADSTERRA NATIVE BANNER MID STEPS" />
+
+          {/* Steps — second half */}
+          {stepsBottom.length > 0 && (
+            <div className="ncl-instructions-card">
+              <ol className="ncl-step-list" aria-label="Step-by-step instructions (part 2)" start={midpoint + 1}>
+                {stepsBottom.map((step, i) => (
+                  <li key={i} className="ncl-step">
+                    <span className="ncl-step-num" aria-hidden>{midpoint + i + 1}</span>
+                    <span className="ncl-step-text">{step.replace(/^Step\s+\d+:\s*/i, "")}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
+
+          {/* ADSTERRA NATIVE BANNER — MIDDLE (after all steps) */}
+          <AdZone label="[ Ad Zone — Middle Banner ]" comment="ADSTERRA NATIVE BANNER MIDDLE" />
         </section>
 
-        {/* ════════════════════════════════════
+        {/* ════════════════════════════════════════════════════════
             SECTION B — Free Sample
-        ════════════════════════════════════ */}
+        ════════════════════════════════════════════════════════ */}
         <section aria-labelledby="section-b-heading">
           <div className="ncl-section-label">
             <span className="ncl-section-badge b">Section B</span>
             <h2 id="section-b-heading" className="ncl-section-title">Free Sample</h2>
           </div>
-          <p style={{ fontSize: "0.875rem", color: "hsl(var(--muted-foreground))", lineHeight: 1.6, marginBottom: "14px" }}>
-            Fully usable sample below — copy and deploy immediately, no account required.
+          <p style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.65, marginBottom: "14px" }}>
+            Fully usable sample — copy and use immediately, no account required.
           </p>
 
           <div className="ncl-code-block">
@@ -179,9 +208,9 @@ export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () =>
 
         <hr className="ncl-divider" />
 
-        {/* ════════════════════════════════════
+        {/* ════════════════════════════════════════════════════════
             SECTION C — Premium Download
-        ════════════════════════════════════ */}
+        ════════════════════════════════════════════════════════ */}
         <section aria-labelledby="section-c-heading">
           <div className="ncl-section-label">
             <span className="ncl-section-badge c">Section C</span>
@@ -199,9 +228,7 @@ export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () =>
                   </svg>
                 </div>
                 <div>
-                  <p style={{ fontSize: "0.7rem", fontWeight: 700, color: "#8C52FF", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "4px" }}>
-                    Full Version
-                  </p>
+                  <p className="ncl-premium-eyebrow">Full Version</p>
                   <h3 className="ncl-premium-title">{tool.title}</h3>
                 </div>
               </div>
@@ -241,16 +268,17 @@ export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () =>
           </div>
         </section>
 
-        {/* <!-- ADSTERRA NATIVE BANNER BOTTOM --> */}
-        <div className="ncl-ad-zone" aria-label="Advertisement placeholder" style={{ marginTop: "32px" }}>
-          {/* ADSTERRA NATIVE BANNER BOTTOM */}
-          [ Ad Zone — Bottom Banner ]
-        </div>
+        {/* ADSTERRA NATIVE BANNER — BOTTOM */}
+        <AdZone label="[ Ad Zone — Bottom Banner ]" comment="ADSTERRA NATIVE BANNER BOTTOM" />
+
       </main>
 
       <footer className="ncl-footer">
-        <p>Nerochaze Creative Labs © 2024 — AI Prompts & Automation Scripts</p>
+        <p>Nerochaze Creative Labs — AI Prompts & Automation Scripts</p>
       </footer>
+
+      {/* Social bar bottom padding so content isn't hidden */}
+      <div style={{ height: "56px" }} aria-hidden />
     </div>
   );
 }

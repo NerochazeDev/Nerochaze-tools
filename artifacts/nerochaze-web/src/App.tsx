@@ -12,6 +12,25 @@ function parseHash(): View {
   return { type: "home" };
 }
 
+/* ─────────────────────────────────────────────────────────────
+   ADSTERRA SOCIAL BAR
+   Replace the contents of this component with your Adsterra
+   Social Bar script tag once you have your placement code.
+   The Social Bar floats at the bottom of every page.
+───────────────────────────────────────────────────────────── */
+function SocialBar() {
+  return (
+    <div
+      className="ncl-social-bar"
+      aria-label="Advertisement"
+      role="complementary"
+    >
+      {/* ADSTERRA SOCIAL BAR — paste your script tag here */}
+      <span className="ncl-social-bar-label">[ Adsterra Social Bar ]</span>
+    </div>
+  );
+}
+
 export default function App() {
   const [view, setView] = useState<View>(parseHash);
 
@@ -35,8 +54,18 @@ export default function App() {
       navigateHome();
       return null;
     }
-    return <DetailPage tool={tool} onBack={navigateHome} />;
+    return (
+      <>
+        <DetailPage tool={tool} onBack={navigateHome} />
+        <SocialBar />
+      </>
+    );
   }
 
-  return <HomePage onSelectTool={navigateTo} />;
+  return (
+    <>
+      <HomePage onSelectTool={navigateTo} />
+      <SocialBar />
+    </>
+  );
 }
