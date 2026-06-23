@@ -1,0 +1,21 @@
+
+> "Build me a sophisticated, one-page professional website for my personal brand, called 'Nerochaze Creative Labs.'
+> The website should be a 'faceless' content hub, showcasing my expertise in designing advanced AI prompts (like the one attached for reverse-engineering YouTube Shorts) and custom automation scripts (like Python bots for Discord and WhatsApp).
+> For the visual aesthetic, I want you to be explicitly inspired by the **Figma Design System**. The UI must be exceptionally clean, modern, and high-quality. Apply the following design constraints:
+> **1. Layout:**
+>  * Use modern **CSS Grid and Flexbox** for a fluid, responsive layout.
+>  * The primary background color must be a very dark charcoal or a deep off-black (#111111 or #1E1E1E).
+>  * Use a minimal amount of an accent color for interactivity, like a bright 'Figma purple' (#8C52FF) or a sleek electric blue.
+>  * Every section and element must have generous **white space** (internal and external padding) for a minimalist feel.
+> **2. Component Styles (Figma Aesthetic):**
+>  * Use a modern sans-serif font system (e.g., 'Inter', 'IBM Plex Sans', or 'Roboto').
+>  * Sections (like cards for different prompt categories or scripts) must have clean, slight corner radii (like 6px or 8px).
+>  * Crucial for the Figma look: Use **pixel-perfect borders**. Apply a very subtle, faint light gray border (#333333 or #CCCCCC at 10-15% opacity) to cards and sections.
+>  * Use soft, elegant 'elevation' with box-shadows. Shadows must be large, diffused, and almost invisible (e.g., 0px 10px 30px rgba(0,0,0,0.3)), rather than hard and black.
+>  * When a user hovers over a primary card or button, it should have a subtle, smooth scale transition (scale(1.02)) or a subtle glow from the border color.
+> **3. Interactivity:**
+>  * Include a prominent, styled search bar.
+>  * When displaying the AI Prompt Matrix from the attached image, present it as a clean **Markdown table** with code blocks (<pre> and <code>) for easy copying.
+>  * Ensure the transition between elements is soft and smooth (e.g., transition: all 0.3s ease-in-out).
+> Please use **modern HTML5** and **clean CSS** to implement this design system from scratch. Do not use an external CSS framework unless absolutely necessary, and if so, customize it extensively to match these rules."
+> 

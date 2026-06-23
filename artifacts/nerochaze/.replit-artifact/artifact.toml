@@ -1,0 +1,27 @@
+kind = "mobile"
+previewPath = "/"
+title = "Nerochaze Creative Labs"
+version = "1.0.0"
+id = "artifacts/nerochaze"
+router = "expo-domain"
+
+[[integratedSkills]]
+name = "expo"
+version = "1.0.0"
+
+[[services]]
+ensurePreviewReachable = "/status"
+name = "expo"
+paths = [ "/" ]
+localPort = 24675
+
+[services.development]
+run = "pnpm --filter @workspace/nerochaze run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/nerochaze", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/nerochaze", "run", "serve" ]
+
+[services.env]
+PORT = "24675"
+BASE_PATH = "/"

@@ -1,0 +1,8 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "kprvnrWGXNJ9wPMVrsm43"
+uri = "file://artifacts/nerochaze/assets/images/icon.png"
+type = "image"
+title = "nerochaze icon"
