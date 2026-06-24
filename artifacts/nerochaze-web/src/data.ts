@@ -206,7 +206,7 @@ Use your video understanding capabilities to watch and analyze the provided YouT
 1. The 3-Second Hook: Deconstruct the exact opening... [PROMPT TRUNCATED - CLICK THE DOWNLOAD LINK BELOW FOR THE FULL 4-PHASE PRODUCTION MATRIX ENGINE]`,
     downloadUrl: "https://docs.google.com/document/u/0/d/11DA7rwgPf2LaBGoXDFK8qQ_g23oRkyU9G7cp9d0QBOI/mobilebasic",
     downloadLabel: "📥 Download Full Shorts Retention Blueprint Engine Matrix",
-  }
+  },
   
 
   {
