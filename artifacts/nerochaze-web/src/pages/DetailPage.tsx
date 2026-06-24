@@ -294,7 +294,7 @@ export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () =>
                   <polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" />
                 </svg>
               </a>
-              <p className="ncl-download-hint">Redirects via secure link · Free via ShrinkMe</p>
+              <p className="ncl-download-hint">Initiating redirect to Google Docs via Nerochaze.</p>
             </div>
           </div>
         </section>
