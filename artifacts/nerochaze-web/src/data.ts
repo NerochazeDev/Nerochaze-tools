@@ -210,58 +210,42 @@ Use your video understanding capabilities to watch and analyze the provided YouT
   
 
   {
-    id: "viral-hook-generator",
-    title: "Viral Hook Generator — 20 Formulas",
+    id: "long-form-structural-replicator-engine",
+    title: "The Long-Form Structural Replicator Engine",
     description:
-      "Generate 20 ranked, platform-specific scroll-stopping opening lines for any niche using 5 battle-tested psychological frameworks.",
+      "Deconstruct the structural chapters, psychological pacing arcs, and B-roll cut rhythm of any viral long-form YouTube video via its link, and seamlessly replicate its winning retention blueprint for a brand-new topic.",
     category: "AI Prompt Matrices",
-    tags: ["#AI-Prompts", "#Hooks", "#Copywriting", "#Viral", "#Shorts", "#Instagram"],
+    tags: ["#YouTube-Longform", "#Scriptwriting", "#Gemini-AI", "#Video-Production", "#Watch-Time", "#Content-Strategy"],
     type: "prompt",
     instructions: [
-      "Prerequisites: Any major AI model (ChatGPT-4, Claude 3.5, or Gemini Pro).",
-      "Identify your content topic — be specific (e.g. 'how to use ChatGPT for cold email', not just 'AI').",
-      "Select your target platform: YouTube Shorts, Instagram Reels, TikTok, X (Twitter), or LinkedIn.",
-      "Define your target audience in one sentence (e.g. 'broke college students who want side income').",
-      "Open your AI model in a fresh conversation.",
-      "Copy the prompt from the sample box below and paste it in.",
-      "Replace [TOPIC], [PLATFORM], and [AUDIENCE] with your specifics.",
-      "Run the prompt — the AI outputs 20 hooks ranked by psychological impact score.",
-      "Pick the top 3 hooks (ranked #1, #2, #3).",
-      "Use Hook #1 on your first post. Use Hook #2 the following day.",
-      "After 48 hours compare views and 3-second retention rate — the hook with higher retention is your winning formula.",
-      "Reuse that formula structure for the next 10 posts, only swapping the topic.",
+      "Prerequisites: Run this strictly on Gemini AI (Pro or Advanced) to utilize its native multimodal capability to watch and analyze live YouTube video links.",
+      "Browse YouTube to find a high-performing long-form video (8-20 minutes) with an effortless narrative flow and pacing you want to mirror. Copy its URL.",
+      "Open a completely fresh, clean chat session in Gemini to prevent old conversational data from exhausting the AI's memory during the long-form scripting process.",
+      "Copy the preview prompt from the sample box below, paste it raw into your fresh Gemini chat window, and press send.",
+      "Wait for Gemini to return the exact system initialization response: 'Long-Form Script Replicator Active. Please provide the viral YouTube long-form link you want me to deconstruct.'",
+      "Paste the copied viral YouTube long-form video URL into the chat window and press send.",
+      "Allow Gemini a few moments to watch the video, map the narrative chapters, calculate the speaker's vocal velocity, and dissect the visual B-roll pattern interrupts.",
+      "Carefully scan the generated 5 distinct, high-velocity long-form video concepts pitched at the bottom of the output.",
+      "Reply to Gemini with your chosen concept number, or instruct the AI to force your own custom niche into that mapped timeline (e.g., 'Give me option 2, but adapt it to the history of SpaceX').",
+      "Copy the full, chapter-by-chapter script generated under the tag [PRODUCTION-READY SCRIPT FOR ULTIMATE LONG-FORM BLUEPRINT].",
+      "During voiceover recording, punch any words formatted in BOLD CAPITAL LETTERS with extra emphasis, and pause completely at the ellipses (...) to create tactical tension.",
+      "When editing in Premiere, CapCut, or DaVinci, execute visual cuts, B-roll overlays, or camera punch-ins exactly at the points designated by the inline bracketed [Visual: ...] cues.",
+      "Cut the video cleanly right on the final cliffhanger exit cue without adding generic outros, driving viewers directly into the next video on your end screen.",
     ],
-    sampleCode: `You are a world-class short-form content hook writer.
+    sampleCode: `# Role & Objective
+You are an elite YouTube Long-Form Director, Structural Script Architect, and Algorithmic Growth Specialist. Your job is to deeply analyze a high-performing, viral long-form YouTube video via its link. You will deconstruct its spoken narrative, psychological chapter transitions, B-roll rhythm, and visual pacing to extract its exact retention blueprint, subsequently replicating its successful retention framework for a completely new long-form topic.
 
-Topic: [TOPIC]
-Platform: [PLATFORM]
-Target Audience: [AUDIENCE]
+DO NOT generate topics or scripts yet. When this prompt is initialized, simply reply with exactly: "Long-Form Script Replicator Active. Please provide the viral YouTube long-form link you want me to deconstruct."
 
-Generate exactly 20 scroll-stopping hooks using these 5 formulas (4 per formula):
+---
 
-FORMULA 1 — FEAR + SPECIFICITY:
-"You're [losing/missing/wasting] [specific measurable thing] every [time unit]"
-
-FORMULA 2 — COUNTER-INTUITIVE CLAIM:
-"[Common widely-held belief] is actually [wrong/making you worse/costing you money]."
-
-FORMULA 3 — STORY OPEN (mid-action):
-"[Character] was [doing ordinary thing] when [unexpected thing happened]."
-
-FORMULA 4 — NUMBER-LED CREDIBILITY:
-"I [tested/analyzed/spent] [specific number] [things/hours/dollars]. Only [small number] [result]."
-
-FORMULA 5 — DIRECT SELF-QUALIFIER:
-"If you still [outdated action], you're [losing specific outcome] every [time period]."
-
-OUTPUT FORMAT:
-For each hook:
-Hook #N [Formula Type]: [Hook text]
-Why it works: [One sentence psychological explanation]
-Estimated scroll-stop rate: [High / Medium / Very High]`,
-    downloadUrl: "https://shrinkme.io/placeholder-hook-generator",
-    downloadLabel: "📥 Download Free Prompt Matrix",
-  },
+## Step 1: Long-Form Video Deconstruction
+Once the link is provided, break down the video into a highly detailed structural analysis:
+1. **Core Niche & Metadata Hook:** Identify the target audience, the underlying... [PROMPT TRUNCATED - CLICK THE DOWNLOAD LINK BELOW FOR THE FULL 4-STEP MASTER LONG-FORM ARCHITECT ENGINE]`,
+    downloadUrl: "https://docs.google.com/document/d/1-yr8qSGGad8a9vxDWu_tGMpTgm56NQ-tWJwjELoWX6s/edit?usp=drivesdk",
+    downloadLabel: "📥 Download Full Long-Form Structural Replicator Engine Matrix",
+}
+,
 
 
 ];
