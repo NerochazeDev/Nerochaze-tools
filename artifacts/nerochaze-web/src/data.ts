@@ -135,59 +135,7 @@ export const TOOLS: Tool[] = [
     downloadUrl: "https://shrinkme.io/placeholder-discord-asset-sizer",
     downloadLabel: "📥 Download Free Automation Script (.py)",
   },
-  {
-    id: "viral-hook-generator",
-    title: "Viral Hook Generator — 20 Formulas",
-    description:
-      "Generate 20 ranked, platform-specific scroll-stopping opening lines for any niche using 5 battle-tested psychological frameworks.",
-    category: "AI Prompt Matrices",
-    tags: ["#AI-Prompts", "#Hooks", "#Copywriting", "#Viral", "#Shorts", "#Instagram"],
-    type: "prompt",
-    instructions: [
-      "Prerequisites: Any major AI model (ChatGPT-4, Claude 3.5, or Gemini Pro).",
-      "Identify your content topic — be specific (e.g. 'how to use ChatGPT for cold email', not just 'AI').",
-      "Select your target platform: YouTube Shorts, Instagram Reels, TikTok, X (Twitter), or LinkedIn.",
-      "Define your target audience in one sentence (e.g. 'broke college students who want side income').",
-      "Open your AI model in a fresh conversation.",
-      "Copy the prompt from the sample box below and paste it in.",
-      "Replace [TOPIC], [PLATFORM], and [AUDIENCE] with your specifics.",
-      "Run the prompt — the AI outputs 20 hooks ranked by psychological impact score.",
-      "Pick the top 3 hooks (ranked #1, #2, #3).",
-      "Use Hook #1 on your first post. Use Hook #2 the following day.",
-      "After 48 hours compare views and 3-second retention rate — the hook with higher retention is your winning formula.",
-      "Reuse that formula structure for the next 10 posts, only swapping the topic.",
-    ],
-    sampleCode: `You are a world-class short-form content hook writer.
-
-  Topic: [TOPIC]
-  Platform: [PLATFORM]
-  Target Audience: [AUDIENCE]
-
-  Generate exactly 20 scroll-stopping hooks using these 5 formulas (4 per formula):
-
-  FORMULA 1 — FEAR + SPECIFICITY:
-  "You're [losing/missing/wasting] [specific measurable thing] every [time unit]"
-
-  FORMULA 2 — COUNTER-INTUITIVE CLAIM:
-  "[Common widely-held belief] is actually [wrong/making you worse/costing you money]."
-
-  FORMULA 3 — STORY OPEN (mid-action):
-  "[Character] was [doing ordinary thing] when [unexpected thing happened]."
-
-  FORMULA 4 — NUMBER-LED CREDIBILITY:
-  "I [tested/analyzed/spent] [specific number] [things/hours/dollars]. Only [small number] [result]."
-
-  FORMULA 5 — DIRECT SELF-QUALIFIER:
-  "If you still [outdated action], you're [losing specific outcome] every [time period]."
-
-  OUTPUT FORMAT:
-  For each hook:
-  Hook #N [Formula Type]: [Hook text]
-  Why it works: [One sentence psychological explanation]
-  Estimated scroll-stop rate: [High / Medium / Very High]`,
-    downloadUrl: "https://shrinkme.io/placeholder-hook-generator",
-    downloadLabel: "📥 Download Free Prompt Matrix",
-  },
+  
   {
     id: "viral-hook-generator",
     title: "Viral Hook Generator — 20 Formulas",
