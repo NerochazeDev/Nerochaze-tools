@@ -1,2 +1,5 @@
 User-agent: *
 Allow: /
+
+# UPDATE: Replace YOUR-DOMAIN with your real Netlify URL
+Sitemap: https://YOUR-DOMAIN.netlify.app/sitemap.xml

@@ -1,3 +1,22 @@
-<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="180" height="180" rx="36" fill="#FF3C00"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#B57BFF"/>
+      <stop offset="50%"  stop-color="#8C52FF"/>
+      <stop offset="100%" stop-color="#5B1FCC"/>
+    </linearGradient>
+    <linearGradient id="letter" x1="148" y1="136" x2="364" y2="376" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="rgba(255,255,255,0.98)"/>
+      <stop offset="100%" stop-color="rgba(220,195,255,0.88)"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="114" fill="url(#bg)"/>
+  <rect width="512" height="256" rx="114" fill="white" fill-opacity="0.06"/>
+  <path
+    d="M148 376V136L364 376V136"
+    stroke="url(#letter)"
+    stroke-width="52"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
 </svg>
