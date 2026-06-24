@@ -135,7 +135,42 @@ export const TOOLS: Tool[] = [
     downloadUrl: "https://shrinkme.io/placeholder-discord-asset-sizer",
     downloadLabel: "📥 Download Free Automation Script (.py)",
   },
-  
+{
+    id: "youtube-algorithm-clone-engine",
+    title: "YouTube Algorithm Clone Engine — Short-Form Hijack Matrix",
+    description:
+      "Deeply analyze a viral short-form video via its link using Gemini's multimodal capabilities to extract its visual/textual blueprint and clone its exact pacing for a new topic.",
+    category: "AI Prompt Matrices",
+    tags: ["#AI-Prompts", "#YouTube-Shorts", "#Gemini", "#Viral-Growth", "#Scriptwriting", "#Video-Production"],
+    type: "prompt",
+    instructions: [
+      "Prerequisites: Must be run on Gemini AI (Gemini Pro or Gemini Advanced) due to its native multimodal ability to watch and analyze video links.",
+      "Scroll through YouTube Shorts, TikTok, or Reels to find a viral video with a pacing, structural flow, or editing style you want to replicate. Copy its link.",
+      "Open a completely fresh, clean chat session in Gemini AI to avoid old conversational context blurring the prompt's strict memory constraints.",
+      "Copy the preview prompt from the sample box below, paste it raw into the clean Gemini chat window, and hit send.",
+      "Wait for Gemini to respond with the activation phrase: 'Script Replicator System Active. Please provide the viral YouTube link you want me to visually and textually deconstruct.'",
+      "Paste your copied viral YouTube Short URL into the chat and press send.",
+      "Allow Gemini a moment to watch the clip, process the visual framing edits, calculate the words-per-second velocity, and map out the timestamped narrative hooks.",
+      "Review the generated 'Narrative Skeleton' and the 5 custom-tailored topic concepts built specifically to fit that exact visual layout and speed profile.",
+      "Select your preferred concept number. If you want to pivot the concept into a different niche, tell the AI here (e.g., 'Give me number 3, but swap the topic to productivity tools').",
+      "Reply to Gemini with your chosen number/modifications to trigger Phase 4.",
+      "Copy the final generated script marked [PRODUCTION-READY SCRIPT FOR ULTIMATE BLUEPRINT] into your teleprompter or phone notes.",
+      "Practice your vocal delivery: punch the words formatted in ALL CAPS with extra volume/energy, and pause strictly at the ellipses (...) to let the visuals breathe.",
+      "During video editing, cut the final audio track instantly with zero dead air or trailing breaths to ensure the final line loops seamlessly back into the video's opening hook.",
+    ],
+    sampleCode: `You are a premier Multimodal Short-Form Director and YouTube Algorithmic Growth Specialist. Your job is to deeply analyze a high-performing viral YouTube Short via its link—processing both its spoken words AND its frame-by-frame visual action—to extract its exact blueprint and replicate its pacing for a new topic.
+
+DO NOT generate topics or scripts yet. When this prompt is initialized, simply reply with exactly: "Script Replicator System Active. Please provide the viral YouTube link you want me to visually and textually deconstruct."
+
+---
+
+## Step 1: Multimodal Deconstruction & Character Analysis
+Once the link is provided, you must watch the video, break down the description, and output a detailed analysis containing:
+1. Target Topic & Description... [PROMPT TRUNCATED - CLICK THE DOWNLOAD LINK BELOW FOR THE FULL 3-STEP MASTER PROMPT ENGINE]`,
+    downloadUrl: "https://docs.google.com/document/d/1-yr8qSGGad8a9vxDWu_tGMpTgm56NQ-tWJwjELoWX6s/edit?usp=drivesdk",
+    downloadLabel: "📥 Download Full YouTube Algorithm Clone Engine Matrix",
+  },
+
   {
     id: "viral-hook-generator",
     title: "Viral Hook Generator — 20 Formulas",
