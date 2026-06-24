@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { type Tool } from "../data";
 
 const PROMPT_FEATURES = [
@@ -75,33 +75,44 @@ function TypeIcon({ type }: { type: Tool["type"] }) {
 
 /* ── Adsterra 728×90 Banner ──────────────────────────────────── */
 /*
-  BANNER AD CODE (Adsterra):
-  key    : 62f011d86f9c397482c478d82c85d03b
-  format : iframe  |  size: 728×90
-  script : https://www.highperformanceformat.com/62f011d86f9c397482c478d82c85d03b/invoke.js
+  Each banner runs inside its own srcdoc iframe so the ad scripts
+  have a real document context — dynamic script injection causes
+  document.currentScript to be null, which breaks multi-placement.
 */
-function AdBanner() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!ref.current || ref.current.childNodes.length > 0) return;
-
-    (window as any).atOptions = {
-      key:    "62f011d86f9c397482c478d82c85d03b",
-      format: "iframe",
-      height: 90,
-      width:  728,
-      params: {},
+const AD_BANNER_HTML = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <style>*{margin:0;padding:0;overflow:hidden;}</style>
+</head>
+<body>
+  <script>
+    atOptions = {
+      'key'    : '62f011d86f9c397482c478d82c85d03b',
+      'format' : 'iframe',
+      'height' : 90,
+      'width'  : 728,
+      'params' : {}
     };
+  </script>
+  <script src="https://www.highperformanceformat.com/62f011d86f9c397482c478d82c85d03b/invoke.js"></script>
+</body>
+</html>`;
 
-    const script    = document.createElement("script");
-    script.type     = "text/javascript";
-    script.src      = "https://www.highperformanceformat.com/62f011d86f9c397482c478d82c85d03b/invoke.js";
-    script.async    = true;
-    ref.current.appendChild(script);
-  }, []);
-
-  return <div ref={ref} className="ncl-ad-banner" aria-label="Advertisement" />;
+function AdBanner() {
+  return (
+    <div className="ncl-ad-banner" aria-label="Advertisement">
+      <iframe
+        srcDoc={AD_BANNER_HTML}
+        width={728}
+        height={90}
+        frameBorder={0}
+        scrolling="no"
+        style={{ border: "none", display: "block", maxWidth: "100%" }}
+        title="Advertisement"
+      />
+    </div>
+  );
 }
 
 /* ── Detail page ─────────────────────────────────────────────── */
