@@ -1,0 +1,54 @@
+The Netlify deploy errored, with the following guidance provided:
+
+Diagnosis
+
+- The provided log excerpt contains no build error lines — it ends at an in-progress step. The only relevant lines in the snippet are informational:
+  - [line 3](#L3) "Failed to fetch cache, continuing with build" (not a fatal error).
+  - [line 5](#L5) "No cached dependencies found. Cloning fresh repo" (informational).
+  - [line 8](#L8) "Installing dependencies" — the log stops here; the error (if any) occurred after this point.
+- Because the snippet stops before an actual failure message, I cannot identify a concrete error type from these lines. Most likely the real failure happened during dependency installation or the build step immediately after, but the exact cause is not present in the excerpt.
+
+Solution — how to get a precise diagnosis and common fixes to try now
+
+1) Capture the full failing log
+- Re-run the deploy and copy the full Netlify deploy log from "Installing dependencies" until the error message. The exact error lines after [line 8](#L8) are required to diagnose precisely.
+- You can also reproduce locally to see the failure:
+  - Clone repo and run dependency/install and build locally:
+```bash
+git clone https://github.com/NerochazeDev/Nerochaze-tools
+cd Nerochaze-tools
+# use the package manager the project uses (npm/yarn/pnpm)
+npm ci      # or npm install
+npm run build
+# or use Netlify CLI to reproduce build behavior:
+npx netlify-cli build
+```
+- Paste the failing lines here (the lines after [line 8](#L8)) if you want me to diagnose further.
+
+2) Quick checklist of the most common causes (try these now)
+- Verify package.json exists at the repository root and contains the build script Netlify should run:
+  - Check: https://github.com/NerochazeDev/Nerochaze-tools/blob/main/package.json
+  - Ensure there is a "scripts.build" entry (or set the correct build command in Netlify Site settings).
+- Ensure lockfile and dependencies are committed (package-lock.json / yarn.lock) — this avoids environment surprises.
+- Try installing locally to see if npm/yarn fails with a more descriptive error (missing peer deps, postinstall script failing, private Git dependency requiring auth).
+- If you use private packages or Git submodules, ensure credentials or tokens are configured in Netlify environment variables.
+- If the project requires a specific Node version, ensure Netlify is using it (via an engines field in package.json or an .nvmrc/.node-version file). If you need to change Node on Netlify, use these docs: https://docs.netlify.com/configure-builds/manage-dependencies/#node-js-and-javascript
+
+3) If you paste the missing error lines (the part after [line 8](#L8)), I will:
+- isolate the exact error lines,
+- identify the error type and cause,
+- provide a targeted fix (for example: add a missing package, update a config, set Node version, or add a file to rollupOptions.external after you confirm the package/file is present in package.json and committed).
+
+If you prefer, paste the rest of the deploy log (starting from the first error after [line 8](#L8)) and I will continue with a precise diagnosis and step-by-step fix.
+
+The relevant error logs are:
+
+Line 0: build-image version: cbbb2660d860fe70694043ec05851a3910a2bf39 (noble-new-builds)
+Line 1: buildbot version: d9608268fa3784a91ae99b736382b065f0910292
+Line 2: Fetching cached dependencies
+Line 3: Failed to fetch cache, continuing with build
+Line 4: Starting to prepare the repo for build
+Line 5: No cached dependencies found. Cloning fresh repo
+Line 6: git clone --filter=blob:none https://github.com/NerochazeDev/Nerochaze-tools
+Line 7: Preparing Git Reference refs/heads/main
+Line 8: Installing dependencies
