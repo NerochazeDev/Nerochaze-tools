@@ -170,6 +170,44 @@ Once the link is provided, you must watch the video, break down the description,
     downloadUrl: "https://docs.google.com/document/d/1-yr8qSGGad8a9vxDWu_tGMpTgm56NQ-tWJwjELoWX6s/edit?usp=drivesdk",
     downloadLabel: "📥 Download Full YouTube Algorithm Clone Engine Matrix",
   },
+{
+    id: "shorts-retention-blueprint-engine",
+    title: "The Shorts Retention Blueprint Engine",
+    description:
+      "Transform raw scripts into high-retention, frame-by-frame production blueprints. Uses Gemini's video understanding to map text styling, camera motion vector codes, and sound design cues directly from viral references.",
+    category: "AI Prompt Matrices",
+    tags: ["#YouTube-Shorts", "#Retention-Editing", "#Gemini-AI", "#Video-Production", "#Faceless-Channels", "#AI-Cinematography"],
+    type: "prompt",
+    instructions: [
+      "Prerequisites: Run this on Gemini AI (Pro or Advanced) so it can use its native multimodal video processing to watch live YouTube links.",
+      "Find a viral video in your niche with fast pacing, intense visual cuts, or a general style you want to mimic, and copy its URL.",
+      "Get your rough text script ready for your upcoming video. It doesn’t need to be perfectly timed or formatted yet.",
+      "Open a completely fresh, blank chat session in Gemini to prevent old conversational context from breaking the strict table formatting rules.",
+      "Copy the preview prompt from the sample box below, paste it raw into your fresh Gemini chat window, and press send.",
+      "Wait for Gemini to respond with the exact system activation trigger: 'System Initialized. Master Engine Active. Please send your text script and the YouTube reference link.'",
+      "Paste both your raw script text and the copied viral YouTube Short URL together into the chat window and hit send.",
+      "Give Gemini a moment to watch the video, calculate the cut timestamps, map the speaker's velocity, and analyze the retention mechanics.",
+      "Review the character sheet profile section. Copy the generated character tracking tags (e.g., [CR-01]) and physical anchor descriptions into image generators like Midjourney to create 100% visually consistent character frames.",
+      "Scroll down to the massive 5-column Markdown table. Use the 'Image Prompt' strings for your image generators, and feed the 'Motion Prompt' text into video tools like Runway, Kling, or Luma for seamless, continuous animations.",
+      "When editing your timeline in CapCut, Premiere, or DaVinci, use the 'On-Screen Text Style' and 'Sound Design Cues' columns to perfectly place text callouts and audio effects at the exact milliseconds instructed.",
+      "Review the high-CTR titles and thumbnail display grid concepts generated at the very bottom of the output to package and upload your finished high-retention Short.",
+    ],
+    sampleCode: `# Role & Objective
+You are a premier YouTube Shorts Retention Engineer, Viral Algorithm Strategist, and Short-Form Video Director. Your task is to analyze a raw production script alongside a high-performing reference YouTube video link, reverse-engineer why that video went viral, and output an absolute frame-by-frame production blueprint optimized for maximum retention (AVD), perfect audio-visual pacing, and swipe-away prevention.
+
+DO NOT generate the full output yet. When this prompt is initialized, simply reply with exactly: "System Initialized. Master Engine Active. Please send your text script and the YouTube reference link."
+
+Once I provide both the script and the link, you must execute the following sequential workflow:
+
+---
+
+## Phase 1: Reference Video Deconstruction & Reverse-Engineering
+Use your video understanding capabilities to watch and analyze the provided YouTube link. Break down what is causing its high retention metrics:
+1. The 3-Second Hook: Deconstruct the exact opening... [PROMPT TRUNCATED - CLICK THE DOWNLOAD LINK BELOW FOR THE FULL 4-PHASE PRODUCTION MATRIX ENGINE]`,
+    downloadUrl: "https://docs.google.com/document/u/0/d/11DA7rwgPf2LaBGoXDFK8qQ_g23oRkyU9G7cp9d0QBOI/mobilebasic",
+    downloadLabel: "📥 Download Full Shorts Retention Blueprint Engine Matrix",
+  }
+  
 
   {
     id: "viral-hook-generator",
