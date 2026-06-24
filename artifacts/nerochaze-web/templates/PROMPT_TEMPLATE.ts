@@ -12,32 +12,55 @@
 //   6. Save  src/data.ts  — your prompt is live on the website immediately
 //
 // ─────────────────────────────────────────────────────────────────────
-// HOW ADS ARE PLACED ON YOUR DETAIL PAGE
-// (You don't configure these here — they are automatic from DetailPage.tsx)
+// ADSTERRA AD CODES (already live — reference only, do not edit here)
+// ─────────────────────────────────────────────────────────────────────
 //
-//   [ ADSTERRA NATIVE BANNER — TOP ]        ← above Step 1
+//  ┌─ SOCIAL BAR (all pages, floating) ─────────────────────────────────┐
+//  │  Location : index.html — right above </body>                        │
+//  │  Code     :                                                          │
+//  │  <script src="https://pl29871569.effectivecpmnetwork.com/f5/9a/     │
+//  │  4d/f59a4d1f72220da9b6110e0bbca280f1.js"></script>                  │
+//  └─────────────────────────────────────────────────────────────────────┘
+//
+//  ┌─ BANNER AD 728×90 (detail page, 4 placements) ─────────────────────┐
+//  │  Location : DetailPage.tsx — <AdBanner /> component (auto-injected) │
+//  │  Placements: above steps · mid steps · after steps · below download │
+//  │                                                                      │
+//  │  <script>                                                            │
+//  │    atOptions = {                                                     │
+//  │      'key'    : '62f011d86f9c397482c478d82c85d03b',                 │
+//  │      'format' : 'iframe',                                            │
+//  │      'height' : 90,                                                  │
+//  │      'width'  : 728,                                                 │
+//  │      'params' : {}                                                   │
+//  │    };                                                                │
+//  │  </script>                                                           │
+//  │  <script src="https://www.highperformanceformat.com/                 │
+//  │  62f011d86f9c397482c478d82c85d03b/invoke.js"></script>              │
+//  └─────────────────────────────────────────────────────────────────────┘
+//
+// HOW ADS APPEAR ON THE DETAIL PAGE (automatic — nothing to configure):
+//
+//   [ BANNER AD — TOP ]       ← above Step 1
 //   Step 1
 //   Step 2
 //   Step 3  ← end of first half
-//   [ ADSTERRA NATIVE BANNER — MID STEPS ]  ← between step halves
+//   [ BANNER AD — MID ]       ← between step halves
 //   Step 4  ← start of second half
 //   Step 5
 //   Step 6  ← end of last step
-//   [ ADSTERRA NATIVE BANNER — MIDDLE ]     ← after all steps
+//   [ BANNER AD — AFTER ]     ← after all steps
 //   (Section B — Free Sample code block)
 //   (Section C — Download button)
-//   [ ADSTERRA NATIVE BANNER — BOTTOM ]     ← below download button
-//   [ ADSTERRA SOCIAL BAR ]                 ← sticky floating bar (all pages)
+//   [ BANNER AD — BOTTOM ]    ← below download button
+//   [ SOCIAL BAR ]            ← sticky floating bar (all pages)
 //
-//   To replace any placeholder with real Adsterra code:
-//   Open  src/pages/DetailPage.tsx  and look for the <AdZone> component.
-//   For the Social Bar, open  src/App.tsx  and look for <SocialBar>.
 // ─────────────────────────────────────────────────────────────────────
 //
 // RULES:
-//   • id        → lowercase, hyphens only, must be globally unique
-//   • tags      → hashtag format, keep #AI-Prompts as first tag
-//   • sampleCode→ use backtick template literals for multi-line prompts
+//   • id         → lowercase, hyphens only, must be globally unique
+//   • tags       → hashtag format, keep #AI-Prompts as first tag
+//   • sampleCode → use backtick template literals for multi-line prompts
 //   • instructions → each string = one numbered step on the page
 //
 // =====================================================================
@@ -57,7 +80,7 @@
   // ↑ Do not change this line for prompt templates
 
   tags: ["#AI-Prompts", "#ADD-TAG-2", "#ADD-TAG-3"],
-  // ↑ Always keep #AI-Prompts first. Add or remove as many tags as needed.
+  // ↑ Always keep #AI-Prompts first. Add or remove tags as needed.
 
   type: "prompt",
   // ↑ Do not change this line for prompt templates
@@ -72,9 +95,8 @@
     "DESCRIBE WHAT TO EXPECT AS OUTPUT.",
     "OPTIONAL: HOW TO ITERATE OR IMPROVE RESULTS.",
   ],
-  // ↑ Each string in this array becomes one numbered step on the detail page.
-  //   The list is split in half — an ad banner appears between the two halves.
-  //   Add or remove strings freely. Keep each step short and clear.
+  // ↑ Each string becomes one numbered step on the detail page.
+  //   The list is split in half — a banner ad appears between the two halves.
 
   sampleCode: `PASTE YOUR FULL PROMPT TEXT HERE.
 
@@ -87,13 +109,12 @@ SECTION HEADERS LIKE THIS make long prompts easier to read.
 Example output format:
 [AI generates this section]
 [AI generates this section]`,
-  // ↑ This appears in the code block on the detail page with a Copy button.
-  //   The user can copy and use this immediately — no download required.
+  // ↑ Appears in the code block on the detail page with a Copy button.
 
   downloadUrl: "https://shrinkme.io/YOUR-SHRINKME-LINK",
   // ↑ Replace with your actual ShrinkMe.io redirect URL
 
   downloadLabel: "📥 Download Free Prompt Matrix",
-  // ↑ Text shown on the download button. You can change the emoji or wording.
+  // ↑ Text shown on the download button.
 },
 // ↑↑↑ COPY TO HERE ↑↑↑

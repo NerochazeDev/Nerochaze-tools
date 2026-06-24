@@ -156,23 +156,39 @@
 }
 .ncl-brand-text     { display: flex; flex-direction: column; }
 .ncl-brand-name     {
-  font-size: 0.9375rem;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  background: linear-gradient(90deg, #ffffff 0%, #C084FC 60%, #8C52FF 100%);
+  font-size: 0.875rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  background: linear-gradient(
+    100deg,
+    #ffffff 0%,
+    #ede0ff 18%,
+    #c084fc 40%,
+    #8c52ff 55%,
+    #b87fff 70%,
+    #ede0ff 84%,
+    #ffffff 100%
+  );
+  background-size: 220% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   line-height: 1.1;
+  animation: ncl-brand-shine 5s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(140, 82, 255, 0.55));
+}
+@keyframes ncl-brand-shine {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
 }
 .ncl-brand-sub      {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 500;
-  color: rgba(255,255,255,0.35);
-  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   line-height: 1;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 /* Search */
@@ -273,34 +289,55 @@
 }
 
 /* Main wordmark */
-.ncl-wordmark-wrap  { margin-bottom: 22px; line-height: 1; }
+.ncl-wordmark-wrap  { margin-bottom: 28px; line-height: 1; }
 .ncl-wordmark-main  {
   display: block;
-  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-size: clamp(3.5rem, 9vw, 6.5rem);
   font-weight: 900;
-  letter-spacing: -0.04em;
-  background: linear-gradient(135deg, #ffffff 0%, #D4AAFF 35%, #8C52FF 70%, #6B2FCC 100%);
+  letter-spacing: -0.03em;
+  background: linear-gradient(
+    105deg,
+    #ffffff  0%,
+    #f5ecff 12%,
+    #e0c5ff 26%,
+    #c084fc 40%,
+    #8c52ff 54%,
+    #6b2fcc 64%,
+    #a87fff 78%,
+    #f0e6ff 90%,
+    #ffffff 100%
+  );
+  background-size: 300% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  line-height: 0.95;
-  margin-bottom: 6px;
+  line-height: 0.9;
+  margin-bottom: 10px;
+  animation: ncl-shimmer-word 9s ease-in-out infinite;
+  filter:
+    drop-shadow(0 0 70px rgba(140, 82, 255, 0.32))
+    drop-shadow(0 0 24px rgba(192, 132, 252, 0.22));
+}
+@keyframes ncl-shimmer-word {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
 }
 .ncl-wordmark-sub   {
   display: block;
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-size: clamp(0.75rem, 2vw, 1.1rem);
   font-weight: 300;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.40em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.28);
+  margin-top: 10px;
 }
 
 /* Gradient accent rule */
 .ncl-hero-rule {
-  width: 80px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #8C52FF, transparent);
-  margin: 22px auto;
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(192,132,252,0.6), #8C52FF, rgba(192,132,252,0.6), transparent);
+  margin: 28px auto;
   border: none;
 }
 
@@ -806,35 +843,19 @@
 .ncl-divider        { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 36px 0; }
 
 /* ════════════════════════════════════════════════════════════
-   ADSTERRA SOCIAL BAR — sticky floating bottom bar
-   Replace the contents of .ncl-social-bar in App.tsx with
-   your actual Adsterra Social Bar <script> tag.
+   ADSTERRA BANNER AD — 728×90
+   Injected via React useEffect in DetailPage.tsx (AdBanner).
+   Social Bar is handled by the script tag in index.html.
 ════════════════════════════════════════════════════════════ */
-.ncl-social-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
+.ncl-ad-banner {
   display: flex;
-  align-items: center;
   justify-content: center;
-  min-height: 56px;
-  background: rgba(10, 8, 20, 0.96);
-  border-top: 1px solid rgba(140, 82, 255, 0.2);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.5);
+  align-items: center;
+  margin: 22px 0;
+  min-height: 90px;
+  overflow: hidden;
 }
-.ncl-social-bar-label {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.15);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  pointer-events: none;
-  user-select: none;
-}
+.ncl-ad-banner iframe { max-width: 100%; }
 
 /* ── Utilities ─────────────────────────────────────────────── */
 input[type="search"]::-webkit-search-cancel-button { display: none; }

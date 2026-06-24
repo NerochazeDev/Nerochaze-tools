@@ -12,32 +12,55 @@
 //   6. Save  src/data.ts  — your script is live on the website immediately
 //
 // ─────────────────────────────────────────────────────────────────────
-// HOW ADS ARE PLACED ON YOUR DETAIL PAGE
-// (You don't configure these here — they are automatic from DetailPage.tsx)
+// ADSTERRA AD CODES (already live — reference only, do not edit here)
+// ─────────────────────────────────────────────────────────────────────
 //
-//   [ ADSTERRA NATIVE BANNER — TOP ]        ← above Step 1
+//  ┌─ SOCIAL BAR (all pages, floating) ─────────────────────────────────┐
+//  │  Location : index.html — right above </body>                        │
+//  │  Code     :                                                          │
+//  │  <script src="https://pl29871569.effectivecpmnetwork.com/f5/9a/     │
+//  │  4d/f59a4d1f72220da9b6110e0bbca280f1.js"></script>                  │
+//  └─────────────────────────────────────────────────────────────────────┘
+//
+//  ┌─ BANNER AD 728×90 (detail page, 4 placements) ─────────────────────┐
+//  │  Location : DetailPage.tsx — <AdBanner /> component (auto-injected) │
+//  │  Placements: above steps · mid steps · after steps · below download │
+//  │                                                                      │
+//  │  <script>                                                            │
+//  │    atOptions = {                                                     │
+//  │      'key'    : '62f011d86f9c397482c478d82c85d03b',                 │
+//  │      'format' : 'iframe',                                            │
+//  │      'height' : 90,                                                  │
+//  │      'width'  : 728,                                                 │
+//  │      'params' : {}                                                   │
+//  │    };                                                                │
+//  │  </script>                                                           │
+//  │  <script src="https://www.highperformanceformat.com/                 │
+//  │  62f011d86f9c397482c478d82c85d03b/invoke.js"></script>              │
+//  └─────────────────────────────────────────────────────────────────────┘
+//
+// HOW ADS APPEAR ON THE DETAIL PAGE (automatic — nothing to configure):
+//
+//   [ BANNER AD — TOP ]       ← above Step 1
 //   Step 1  install libraries
 //   Step 2  create API token
-//   Step 3  configure settings  ← end of first half
-//   [ ADSTERRA NATIVE BANNER — MID STEPS ]  ← between step halves
-//   Step 4  download script     ← start of second half
+//   Step 3  configure settings   ← end of first half
+//   [ BANNER AD — MID ]       ← between step halves
+//   Step 4  download script      ← start of second half
 //   Step 5  set credentials
-//   Step 6  run the bot         ← end of last step
-//   [ ADSTERRA NATIVE BANNER — MIDDLE ]     ← after all steps
+//   Step 6  run the bot          ← end of last step
+//   [ BANNER AD — AFTER ]     ← after all steps
 //   (Section B — Free Sample code block)
 //   (Section C — Download button)
-//   [ ADSTERRA NATIVE BANNER — BOTTOM ]     ← below download button
-//   [ ADSTERRA SOCIAL BAR ]                 ← sticky floating bar (all pages)
+//   [ BANNER AD — BOTTOM ]    ← below download button
+//   [ SOCIAL BAR ]            ← sticky floating bar (all pages)
 //
-//   To replace any placeholder with real Adsterra code:
-//   Open  src/pages/DetailPage.tsx  and look for the <AdZone> component.
-//   For the Social Bar, open  src/App.tsx  and look for <SocialBar>.
 // ─────────────────────────────────────────────────────────────────────
 //
 // RULES:
-//   • id        → lowercase, hyphens only, must be globally unique
-//   • tags      → always keep #Python-Scripts as the first tag
-//   • sampleCode→ paste your Python code inside the backtick block
+//   • id         → lowercase, hyphens only, must be globally unique
+//   • tags       → always keep #Python-Scripts as the first tag
+//   • sampleCode → paste your Python code inside the backtick block
 //   • instructions → each string = one numbered step on the page
 //
 // =====================================================================
@@ -76,9 +99,8 @@
     "Save the file and run it: python YOUR_SCRIPT_NAME.py",
     "DESCRIBE THE EXPECTED OUTPUT OR FIRST RUN BEHAVIOR.",
   ],
-  // ↑ Each string in this array becomes one numbered step on the detail page.
-  //   The list is split in half — an ad banner appears between the two halves.
-  //   Add or remove steps freely.
+  // ↑ Each string becomes one numbered step on the detail page.
+  //   The list is split in half — a banner ad appears between the two halves.
 
   sampleCode: `# PASTE YOUR PYTHON SCRIPT SAMPLE HERE
 # This section is shown as a free sample with a Copy button.
@@ -95,12 +117,11 @@ def main():
 if __name__ == "__main__":
     main()`,
   // ↑ Keep this as a clean, readable sample — not the full script.
-  //   The full version goes behind the ShrinkMe link.
 
   downloadUrl: "https://shrinkme.io/YOUR-SHRINKME-LINK",
   // ↑ Replace with your actual ShrinkMe.io redirect URL
 
   downloadLabel: "📥 Download Free Automation Script (.py)",
-  // ↑ Text shown on the download button. You can change the emoji or wording.
+  // ↑ Text shown on the download button.
 },
 // ↑↑↑ COPY TO HERE ↑↑↑

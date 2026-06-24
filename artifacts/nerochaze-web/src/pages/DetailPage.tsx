@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { type Tool } from "../data";
 
 const PROMPT_FEATURES = [
@@ -73,24 +73,44 @@ function TypeIcon({ type }: { type: Tool["type"] }) {
   );
 }
 
-/* ── Ad zone component ───────────────────────────────────────── */
-function AdZone({ label, comment }: { label: string; comment: string }) {
-  return (
-    <div className="ncl-ad-zone" aria-label="Advertisement">
-      {/* {comment} */}
-      {label}
-    </div>
-  );
+/* ── Adsterra 728×90 Banner ──────────────────────────────────── */
+/*
+  BANNER AD CODE (Adsterra):
+  key    : 62f011d86f9c397482c478d82c85d03b
+  format : iframe  |  size: 728×90
+  script : https://www.highperformanceformat.com/62f011d86f9c397482c478d82c85d03b/invoke.js
+*/
+function AdBanner() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!ref.current || ref.current.childNodes.length > 0) return;
+
+    (window as any).atOptions = {
+      key:    "62f011d86f9c397482c478d82c85d03b",
+      format: "iframe",
+      height: 90,
+      width:  728,
+      params: {},
+    };
+
+    const script    = document.createElement("script");
+    script.type     = "text/javascript";
+    script.src      = "https://www.highperformanceformat.com/62f011d86f9c397482c478d82c85d03b/invoke.js";
+    script.async    = true;
+    ref.current.appendChild(script);
+  }, []);
+
+  return <div ref={ref} className="ncl-ad-banner" aria-label="Advertisement" />;
 }
 
 /* ── Detail page ─────────────────────────────────────────────── */
 export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () => void }) {
-  const isPrompt = tool.type === "prompt";
-  const features = isPrompt ? PROMPT_FEATURES : SCRIPT_FEATURES;
+  const isPrompt  = tool.type === "prompt";
+  const features  = isPrompt ? PROMPT_FEATURES : SCRIPT_FEATURES;
   const sampleLang = isPrompt ? "PROMPT" : "PYTHON";
 
-  /* Split instructions: first half → ad → second half */
-  const midpoint = Math.ceil(tool.instructions.length / 2);
+  const midpoint    = Math.ceil(tool.instructions.length / 2);
   const stepsTop    = tool.instructions.slice(0, midpoint);
   const stepsBottom = tool.instructions.slice(midpoint);
 
@@ -142,8 +162,8 @@ export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () =>
             <h2 id="section-a-heading" className="ncl-section-title">Technical Guide</h2>
           </div>
 
-          {/* ADSTERRA NATIVE BANNER — TOP */}
-          <AdZone label="[ Ad Zone — Top Banner ]" comment="ADSTERRA NATIVE BANNER TOP" />
+          {/* ADSTERRA BANNER — TOP */}
+          <AdBanner />
 
           {/* Steps — first half */}
           <div className="ncl-instructions-card">
@@ -157,8 +177,8 @@ export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () =>
             </ol>
           </div>
 
-          {/* ADSTERRA NATIVE BANNER — MID STEPS (shown between step halves) */}
-          <AdZone label="[ Ad Zone — Mid-Steps Banner ]" comment="ADSTERRA NATIVE BANNER MID STEPS" />
+          {/* ADSTERRA BANNER — MID STEPS */}
+          <AdBanner />
 
           {/* Steps — second half */}
           {stepsBottom.length > 0 && (
@@ -174,8 +194,8 @@ export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () =>
             </div>
           )}
 
-          {/* ADSTERRA NATIVE BANNER — MIDDLE (after all steps) */}
-          <AdZone label="[ Ad Zone — Middle Banner ]" comment="ADSTERRA NATIVE BANNER MIDDLE" />
+          {/* ADSTERRA BANNER — MIDDLE (after all steps) */}
+          <AdBanner />
         </section>
 
         {/* ════════════════════════════════════════════════════════
@@ -268,15 +288,14 @@ export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () =>
           </div>
         </section>
 
-        {/* ADSTERRA NATIVE BANNER — BOTTOM */}
-        <AdZone label="[ Ad Zone — Bottom Banner ]" comment="ADSTERRA NATIVE BANNER BOTTOM" />
+        {/* ADSTERRA BANNER — BOTTOM */}
+        <AdBanner />
 
       </main>
 
       <footer className="ncl-footer">
-        <p>Nerochaze Creative Labs — AI Prompts & Automation Scripts</p>
+        <p>Nerochaze Creative Labs — AI Prompts &amp; Automation Scripts</p>
       </footer>
-
     </div>
   );
 }
