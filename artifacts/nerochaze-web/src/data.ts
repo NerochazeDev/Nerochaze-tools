@@ -1,17 +1,35 @@
 // ============================================================
 // NEROCHAZE CREATIVE LABS — CONTENT DATA FILE
 // ============================================================
-// HOW TO ADD NEW CONTENT:
 //
-//   1. Open  templates/PROMPT_TEMPLATE.ts  (for AI prompts)
-//      — or — templates/SCRIPT_TEMPLATE.ts  (for bot scripts)
+// HOW TO ADD A NEW AI PROMPT MATRIX:
+//   1. Open  templates/PROMPT_TEMPLATE.ts
 //   2. Copy the object between the ↓↓↓ COPY FROM HERE ↓↓↓ markers
-//   3. Fill in every field in your editor
-//   4. Paste the completed object at the TOP of the TOOLS array below
-//      (right after the opening bracket on the line that says "TOOLS = [")
-//   5. Save the file — the new tool appears on the website immediately
+//   3. Fill in every ALL_CAPS field with your real content
+//   4. Paste the completed object right after the comment block below:
 //
-// ─────────────────────────────────────────────────────────────
+//        ════════════════════════════════════════════════
+//        ↓↓↓  PASTE YOUR FILLED PROMPT TEMPLATE HERE  ↓↓↓
+//        ════════════════════════════════════════════════
+//
+// HOW TO ADD A NEW BOT SCRIPT:
+//   1. Open  templates/SCRIPT_TEMPLATE.ts
+//   2. Copy the object between the ↓↓↓ COPY FROM HERE ↓↓↓ markers
+//   3. Fill in every ALL_CAPS field with your real content
+//   4. Paste the completed object right after the comment block below:
+//
+//        ════════════════════════════════════════════════
+//        ↓↓↓  PASTE YOUR FILLED SCRIPT TEMPLATE HERE  ↓↓↓
+//        ════════════════════════════════════════════════
+//
+//   5. Save the file — the new tool appears on the website immediately.
+//
+//   RULES:
+//   • New tools go at the TOP of the array (they appear first on site).
+//   • Each tool's  id  must be unique — use lowercase + hyphens only.
+//   • Don't delete or change the existing tools — just add above them.
+//
+// ============================================================
 
 export interface Tool {
   id: string;
@@ -27,7 +45,16 @@ export interface Tool {
 }
 
 export const TOOLS: Tool[] = [
-  // ↓ Paste new tools HERE (at the top of this array) ↓
+
+  // ════════════════════════════════════════════════════════════════
+  // ↓↓↓  PASTE YOUR FILLED PROMPT TEMPLATE HERE  (AI Prompts)  ↓↓↓
+  // ════════════════════════════════════════════════════════════════
+
+  // ════════════════════════════════════════════════════════════════
+  // ↓↓↓  PASTE YOUR FILLED SCRIPT TEMPLATE HERE  (Bot Scripts)  ↓↓↓
+  // ════════════════════════════════════════════════════════════════
+
+  // ─── Existing tools below — do not remove ────────────────────────
 
   {
     id: "viral-hook-generator",

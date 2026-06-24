@@ -2,22 +2,25 @@
 # Netlify build configuration for Nerochaze Creative Labs
 # ─────────────────────────────────────────────────────────────────────
 [build]
-  # 1. Enable pnpm via Corepack (built into Node 20+)
-  # 2. Install workspace dependencies
-  # 3. Build the web artifact
-  command = "corepack enable && pnpm install --no-frozen-lockfile && pnpm --filter @workspace/nerochaze-web run build"
+  # Netlify's own install step (runs before this command) will use the
+  # pnpm-lock.yaml it finds in the repo root.
+  # This command only runs the actual Vite build after install succeeds.
+  command = "pnpm --filter @workspace/nerochaze-web run build"
   publish = "artifacts/nerochaze-web/dist/public"
 
 [build.environment]
   NODE_VERSION = "20"
-  NODE_ENV     = "production"
-  # BASE_PATH is "/" on Netlify — assets are served from the domain root
-  BASE_PATH    = "/"
+  # BASE_PATH is "/" on Netlify — assets are served from the domain root.
+  BASE_PATH = "/"
+  # IMPORTANT: Do NOT set NODE_ENV=production here.
+  # pnpm skips devDependencies when NODE_ENV=production, but the Vite
+  # build needs them (vite, react, tailwind etc. are all devDeps).
+  # Netlify sets NODE_ENV=production itself at a lower level; leaving it
+  # out of this block lets pnpm install ALL dependencies correctly.
 
 # ─────────────────────────────────────────────────────────────────────
-# SPA fallback — hash routing (#/tool/...) works without this,
-# but keeping it here ensures direct URL loads still work if routing
-# ever switches to path-based in the future.
+# SPA fallback — required so refreshing a deep URL serves index.html
+# instead of a 404 (hash routing also benefits from this safety net).
 # ─────────────────────────────────────────────────────────────────────
 [[redirects]]
   from   = "/*"

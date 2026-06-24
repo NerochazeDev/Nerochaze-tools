@@ -1,0 +1,81 @@
+The Netlify deploy errored, with the following guidance provided:
+
+- Relevant log lines
+  - The install step is running with NODE_ENV=production: [line 17](#L17).
+  - pnpm fails because the lockfile is out of date and CI is using a frozen lockfile: [line 22](#L22).
+  - pnpm reports which dependency/specifier mismatch caused the failure: [line 25](#L25).
+  - Your custom build command included --no-frozen-lockfile but Netlify runs dependency install before the build command, so that flag in the build command does not affect Netlify’s install step: [line 9](#L9).
+
+Diagnosis
+- Error type: pnpm install failure due to an out-of-sync pnpm-lock.yaml (ERR_PNPM_OUTDATED_LOCKFILE).
+- Cause: pnpm in CI enforces a frozen lockfile by default. The repo’s pnpm-lock.yaml does not match the package specifiers (one workspace dependency @workspace/api-client-react was removed/changed), so pnpm refuses to install. The build’s attempt to pass --no-frozen-lockfile in the build command does not help because Netlify runs its own install step before the build command.
+
+Solution (pick one of the two preferred fixes; 1 is recommended)
+1) Update and commit the lockfile locally (recommended)
+   - Verify the workspace/package is present and correct:
+     - Confirm that the package specifier mentioned in the error ( @workspace/api-client-react ) is intentionally present or removed in your workspace package.json files. Check your repository package.json(s): https://github.com/NerochazeDev/Nerochaze-tools/blob/main/package.json
+     - If you removed or renamed that workspace package, ensure the package files/manifest were committed and workspace config was updated.
+   - On your local machine, from the repo root run:
+```bash
+corepack enable
+pnpm install
+```
+   - This updates pnpm-lock.yaml to match package.json. Commit and push the updated lockfile:
+```bash
+git add pnpm-lock.yaml
+git commit -m "Update pnpm-lock.yaml to match package.json"
+git push
+```
+   - Netlify will use the updated lockfile and the install should succeed.
+
+2) Temporary/alternate Netlify-side fixes (if you cannot update the lockfile immediately)
+   - Option A — Allow non-frozen install on Netlify:
+     - In Netlify site settings > Build & deploy > Environment > Environment variables, add:
+       - Key: PNPM_FLAGS
+       - Value: --no-frozen-lockfile
+     - Or set the Install command in Netlify to explicitly run pnpm without frozen lockfile (Project settings > Build & deploy > Build settings > Edit “Install command”):
+```bash
+corepack enable && pnpm install --no-frozen-lockfile
+```
+     - Note: This is a workaround. The proper fix is to keep lockfile committed and in sync.
+   - Option B — Ensure devDependencies are available during install (if missing devDeps cause the mismatch):
+     - The log shows NODE_ENV=production ([line 17](#L17)) so devDependencies will not be installed. If your workspace relies on devDependencies during install, either:
+       - Temporarily set NODE_ENV to blank or 'development' in Netlify environment variables during install, or
+       - Make dev-only packages true dependencies, or
+       - Preferably update the lockfile so install succeeds with NODE_ENV=production.
+
+Why this will fix it
+- pnpm enforces lockfile correctness in CI; updating and committing pnpm-lock.yaml synchronizes the specifiers so pnpm can install deterministically. Allowing --no-frozen-lockfile on Netlify only bypasses the check but does not address the underlying mismatch, so updating the lockfile is the recommended long-term fix.
+
+The relevant error logs are:
+
+Line 0: build-image version: cbbb2660d860fe70694043ec05851a3910a2bf39 (noble-new-builds)
+Line 1: buildbot version: d9608268fa3784a91ae99b736382b065f0910292
+Line 2: Fetching cached dependencies
+Line 3: Failed to fetch cache, continuing with build
+Line 4: Starting to prepare the repo for build
+Line 5: No cached dependencies found. Cloning fresh repo
+Line 6: git clone --filter=blob:none https://github.com/NerochazeDev/Nerochaze-tools
+Line 7: Preparing Git Reference refs/heads/main
+Line 8: Custom publish path detected. Proceeding with the specified path: 'artifacts/nerochaze-web/dist/public'
+Line 9: Custom build command detected. Proceeding with the specified command: 'corepack enable && pnpm install --no-frozen-lockfile && p
+Line 10: Installing dependencies
+Line 11: mise ~/.config/mise/config.toml tools: python@3.14.3
+Line 12: mise ~/.config/mise/config.toml tools: ruby@3.4.8
+Line 13: mise ~/.config/mise/config.toml tools: go@1.26.2
+Line 14: v20.20.2 is already installed.
+Line 15: Now using node v20.20.2 (npm v10.8.2)
+Line 16: Enabling Node.js Corepack
+Line 17: WARNING: The environment variable 'NODE_ENV' is set to 'production'. Any 'devDependencies' in package.json will not be installed
+Line 18: pnpm workspaces detected
+Line 19: Failed during stage 'Install dependencies': dependency_installation script returned non-zero exit code: 1
+Line 20: Installing npm packages using pnpm version 10.30.3
+Line 21: Scope: all 2 workspace projects
+Line 22:  ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with <ROOT>/artifact
+Line 23: Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install 
+Line 24:   Failure reason:
+Line 25:   specifiers in the lockfile don't match specifiers in package.json:
+* 1 dependencies were removed: @workspace/api-client-react@
+Line 26: Error during pnpm install
+Line 27: Failing build: Failed to install dependencies
+Line 28: Finished processing build request in 5.256s
