@@ -242,7 +242,7 @@ DO NOT generate topics or scripts yet. When this prompt is initialized, simply r
 ## Step 1: Long-Form Video Deconstruction
 Once the link is provided, break down the video into a highly detailed structural analysis:
 1. **Core Niche & Metadata Hook:** Identify the target audience, the underlying... [PROMPT TRUNCATED - CLICK THE DOWNLOAD LINK BELOW FOR THE FULL 4-STEP MASTER LONG-FORM ARCHITECT ENGINE]`,
-    downloadUrl: "https://docs.google.com/document/d/1-yr8qSGGad8a9vxDWu_tGMpTgm56NQ-tWJwjELoWX6s/edit?usp=drivesdk",
+    downloadUrl: "https://docs.google.com/document/d/143V2GRhIYAPZ91q2JsaA6pTNmdPDrPTeQ6iW-ZZenQM/edit?usp=drivesdk",
     downloadLabel: "📥 Download Full Long-Form Structural Replicator Engine Matrix",
 }
 ,
