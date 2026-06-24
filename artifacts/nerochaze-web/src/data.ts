@@ -135,6 +135,44 @@ export const TOOLS: Tool[] = [
     downloadUrl: "https://shrinkme.io/placeholder-discord-asset-sizer",
     downloadLabel: "📥 Download Free Automation Script (.py)",
   },
+ {
+    id: "long-form-cinematic-continuity-engine",
+    title: "The Long-Form Cinematic Continuity Engine",
+    description:
+      "Transform scripts into frame-by-frame production blueprints using Gemini's video analysis. Build identity-locked asset sheets and continuous frame-chaining instructions for flawlessly consistent AI video across long runtimes.",
+    category: "AI Prompt Matrices",
+    tags: ["#AI-Video", "#Character-Continuity", "#Gemini-AI", "#Video-Production", "#Runway-Gen3", "#Kling-AI"],
+    type: "prompt",
+    instructions: [
+      "Prerequisites: Run this strictly inside Gemini AI (Pro or Advanced) to tap into its native multimodal video processing for live YouTube links.",
+      "Find a cinematic, high-performing long-form video (8-20 minutes) on YouTube with flawless visual flow and zero messy transitions. Copy its link.",
+      "Prepare your finalized long-form script. Since this engine builds a frame-by-frame map, your voiceover text needs to be set before generating visuals.",
+      "Open a completely fresh, brand-new chat session in Gemini to protect the AI's contextual memory from getting cluttered by old messages.",
+      "Copy the preview prompt from the sample box below, paste it raw into your fresh Gemini chat window, and hit send.",
+      "Wait for Gemini to respond with the exact activation trigger line: 'System Initialized. Cinematic Long-Form Animation Engine Active. Please send your text script and the YouTube reference link.'",
+      "Paste your full production script text and the copied viral YouTube video URL together into the chat window and press send.",
+      "Give Gemini a moment to analyze the reference video's framing cuts, visual scene resets, sound effects hierarchy, and retention pacing.",
+      "Review the Master Visual Continuity Sheet section. Lock down the tracking codes (like [CR-01] and [ENV-01]) and permanent physical markers for your image generators to ensure your characters never change faces or clothing across frames.",
+      "Scroll down to the 5-column Production Table. Copy the text from the '8K Consistent Asset Generation Prompt' column and paste it into your favorite image generator (Midjourney, Leonardo, etc.) to create your baseline images.",
+      "Take those generated starting frames and feed them into your video generator (Kling, Luma, Runway, Sora) along with the text from the 'Frame-Matched Motion & Transition Prompt' column to execute perfect camera tracking vectors.",
+      "In your editing timeline (CapCut, Premiere, DaVinci), follow the 'Acoustic Soundscapes & SFX Cues' column to place atmospheric drones and sound design effects at the exact millisecond mark.",
+    ],
+    sampleCode: `# Role & Objective
+You are a premier YouTube Long-Form Animation Director, Visual Effects Supervisor, and Viral Retention Engineer. Your task is to transform a raw script and a high-performing reference YouTube video link into an absolute frame-by-frame production blueprint. The core priority of this engine is maintaining flawless visual continuity, identity-locking, and seamless frame-matching transitions across long runtimes while optimizing for maximum Average View Duration (AVD).
+
+DO NOT generate the full output yet. When this prompt is initialized, simply reply with exactly: "System Initialized. Cinematic Long-Form Animation Engine Active. Please send your text script and the YouTube reference link."
+
+Once I provide both the script and the link, you must execute the following sequential workflow:
+
+---
+
+## Phase 1: Reference Video Link Breakdown & Pacing Analysis
+Analyze the provided YouTube link and break down its structural visual pacing:
+1. Retention Hooks: Deconstruct how the first 30–60 seconds... [PROMPT TRUNCATED - CLICK THE DOWNLOAD LINK BELOW FOR THE FULL 4-PHASE VISUAL CONTINUITY MASTER MATRIX]`,
+    downloadUrl: "https://docs.google.com/document/d/14HMp3nZt8L304oz1STv4APlnAocT0mE4cgGiNH3VxRc/edit?usp=drivesdk",
+    downloadLabel: "📥 Download Full Long-Form Cinematic Continuity Engine Matrix",
+},
+ 
 {
     id: "youtube-algorithm-clone-engine",
     title: "YouTube Algorithm Clone Engine — Short-Form Hijack Matrix",
