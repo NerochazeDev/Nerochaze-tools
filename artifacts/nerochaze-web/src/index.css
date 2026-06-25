@@ -483,12 +483,18 @@
   border: 1px solid rgba(255,255,255,0.08);
 }
 
-/* ── Card grid ─────────────────────────────────────────────── */
-.ncl-grid           {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 12px;
+/* ── Card list (card + ad pairs) ────────────────────────────── */
+.ncl-card-list      {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   margin-bottom: 40px;
+}
+.ncl-card-ad-pair   {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
 }
 
 /* ── Content card ───────────────────────────────────────────── */

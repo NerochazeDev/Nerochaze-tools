@@ -265,12 +265,14 @@ export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) 
                 <h2>AI Prompt Matrices</h2>
                 <span className="ncl-count-badge">{filtered.length}</span>
               </div>
-              <div className="ncl-grid">
+              <div className="ncl-card-list">
                 {filtered.map((tool) => (
-                  <ContentCard key={tool.id} tool={tool} onClick={() => onSelectTool(tool.id)} />
+                  <div key={tool.id} className="ncl-card-ad-pair">
+                    <ContentCard tool={tool} onClick={() => onSelectTool(tool.id)} />
+                    <AdBanner />
+                  </div>
                 ))}
               </div>
-              <AdBanner />
             </>
           )}
 
