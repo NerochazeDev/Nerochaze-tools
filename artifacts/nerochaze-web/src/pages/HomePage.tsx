@@ -48,7 +48,7 @@ function LogoMark({ size = 34 }: { size?: number }) {
 
 /* ── Content card ───────────────────────────────────────────── */
 function ContentCard({ tool, onClick }: { tool: Tool; onClick: () => void }) {
-  const [showTags, setShowTags] = useState(false);
+  const [showTags, setShowTags] = useState(true);
 
   return (
     <button className="ncl-card" onClick={onClick} aria-label={`View ${tool.title}`}>
