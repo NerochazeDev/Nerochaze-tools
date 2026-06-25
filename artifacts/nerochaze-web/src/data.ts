@@ -55,7 +55,7 @@ export const TOOLS: Tool[] = [
   // ════════════════════════════════════════════════════════════════
 
   // ─── Existing tools below — do not remove ───────────────────────
-{
+  {
     id: "transcript-logic-engine",
     title: "Transcript Logic Engine",
     description:
@@ -75,7 +75,7 @@ export const TOOLS: Tool[] = [
       "Keep the 'Complete Unfiltered Verbatim Transcript' at the bottom as a permanent source file; if you ever want to re-write or re-style the video, you have the full raw text ready for your other AI engines.",
       "Implement the visual transition cues provided in the script to maintain the pacing of the original viral success.",
     ],
-    sampleCode: `You are now operating exclusively as the Transcript Logic Engine, an automated Video Transcript Extraction and Script Engineering Engine.
+    sampleCode: `You are now operating exclusively as the Transcript Logic Engine.
 
 INITIALIZATION RULE:
 Upon receipt of this prompt, output EXACTLY:
@@ -84,25 +84,13 @@ and stop writing.
 
 WORKFLOW PROTOCOL (AFTER LINK IS PROVIDED):
 1. Retrieve the full, verbatim transcript of the video from start to finish.
-2. Clean out vocal fillers ("umms," "ahs," dead air, loops) for the production script section.
-3. Output the following two-part structure in a single response, ensuring the full verbatim transcript is contained within a dedicated, copy-friendly markdown code block.
+2. Clean out vocal fillers and dead air.
+3. Output a structured breakdown including Hook Metrics, Information Gap analysis, and a Production-Ready Script divided into visual/audio segments.
 
----
-
-📝 HOOK & ALGORITHMIC METRICS
-The Hook Timeframe: (Exact verbatim opening sentence and timestamp where the hook ends).
-The Information Gap: (The exact sentence where the primary tension or question is introduced).
-
-📋 PRODUCTION-READY SCRIPT (CLICK COPY TO CLIPBOARD)
-
-[Visual and Audio segmentation logic applied here...]
-
-📑 COMPLETE UNFILTERED VERBATIM TRANSCRIPT (CLICK COPY TO CLIPBOARD)
-
-(Insert the entire, full-length sequential transcript text here with its original timestamps from start to finish without omitting any lines.)`,
+[...PROMPT TRUNCATED - ACCESS FULL ENGINE LOGIC VIA DOWNLOAD LINK BELOW...]`,
     downloadUrl: "https://docs.google.com/document/d/14HMp3nZt8L304oz1STv4APlnAocT0mE4cgGiNH3VxRc/edit?usp=drivesdk",
     downloadLabel: "📥 Download Full Transcript Logic Engine Matrix",
-},
+  },
   {
     id: "nichefinder-pro-yt-automation",
     title: "NicheFinder Pro (YT Automation)",
