@@ -88,7 +88,7 @@ WORKFLOW PROTOCOL (AFTER LINK IS PROVIDED):
 3. Output a structured breakdown including Hook Metrics, Information Gap analysis, and a Production-Ready Script divided into visual/audio segments.
 
 [...PROMPT TRUNCATED - ACCESS FULL ENGINE LOGIC VIA DOWNLOAD LINK BELOW...]`,
-    downloadUrl: "https://docs.google.com/document/d/14HMp3nZt8L304oz1STv4APlnAocT0mE4cgGiNH3VxRc/edit?usp=drivesdk",
+    downloadUrl: "https://docs.google.com/document/d/14xg9zWABsbd407xDM4WSTd8O-wY8xxfCAAl3jTYXoLI/edit?usp=drivesdk",
     downloadLabel: "📥 Download Full Transcript Logic Engine Matrix",
   },
   {
