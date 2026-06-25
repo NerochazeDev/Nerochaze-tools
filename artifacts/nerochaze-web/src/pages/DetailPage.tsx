@@ -7,12 +7,6 @@ const PROMPT_FEATURES = [
   "Platform-specific adaptations",
   "Lifetime updates included",
 ];
-const SCRIPT_FEATURES = [
-  "Full production-ready source code",
-  "Advanced error handling & logging",
-  "Config file for easy customization",
-  "Step-by-step deployment guide",
-];
 
 /* ── Copy button ─────────────────────────────────────────────── */
 function CopyButton({ code }: { code: string }) {
@@ -112,9 +106,7 @@ function AdBanner() {
 
 /* ── Detail page ─────────────────────────────────────────────── */
 export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () => void }) {
-  const isPrompt   = tool.type === "prompt";
-  const features   = isPrompt ? PROMPT_FEATURES : SCRIPT_FEATURES;
-  const sampleLang = isPrompt ? "PROMPT" : "PYTHON";
+  const features   = PROMPT_FEATURES;
   const [showTags, setShowTags] = useState(true);
 
   const midpoint    = Math.ceil(tool.instructions.length / 2);
@@ -144,11 +136,11 @@ export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () =>
         {/* ── Hero ───────────────────────────────────────────────── */}
         <div className="ncl-hero-block">
           <div className="ncl-hero-icon-row">
-            <div className={`ncl-hero-icon ${tool.type}`} aria-hidden>
+            <div className="ncl-hero-icon prompt" aria-hidden>
               <TypeIcon type={tool.type} />
             </div>
-            <span className={`ncl-type-badge ${tool.type}`} style={{ padding: "4px 13px", borderRadius: "20px", fontSize: "0.72rem" }}>
-              {isPrompt ? "AI Prompt Matrix" : "Automation Bot Script"}
+            <span className="ncl-type-badge prompt" style={{ padding: "4px 13px", borderRadius: "20px", fontSize: "0.72rem" }}>
+              AI Prompt Matrix
             </span>
           </div>
           <h1 className="ncl-hero-title">{tool.title}</h1>
@@ -236,7 +228,7 @@ export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () =>
                 <div className="ncl-chrome-dot" style={{ background: "#FFBD2E" }} />
                 <div className="ncl-chrome-dot" style={{ background: "#28C840" }} />
               </div>
-              <span className="ncl-lang-tag">{sampleLang}</span>
+              <span className="ncl-lang-tag">PROMPT</span>
               <CopyButton code={tool.sampleCode} />
             </div>
             <div className="ncl-code-body">
@@ -273,9 +265,7 @@ export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () =>
               </div>
 
               <p className="ncl-premium-desc">
-                {isPrompt
-                  ? "Unlock the complete prompt matrix — all variations, edge cases, platform adaptations, and extended examples in one download."
-                  : "Get the full production-ready script with advanced features, error handling, config file, and complete step-by-step deployment documentation."}
+                Unlock the complete prompt matrix — all variations, edge cases, platform adaptations, and extended examples in one download.
               </p>
 
               <div className="ncl-premium-features" aria-label="What's included">
@@ -312,7 +302,7 @@ export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () =>
       </main>
 
       <footer className="ncl-footer">
-        <p>Nerochaze Creative Labs — AI Prompts &amp; Automation Scripts</p>
+        <p>Nerochaze Creative Labs — Premium AI Prompt Matrices</p>
       </footer>
     </div>
   );

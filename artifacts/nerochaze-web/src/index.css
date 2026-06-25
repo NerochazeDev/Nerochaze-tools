@@ -546,13 +546,9 @@
   background: rgba(140,82,255,0.1);
   border: 1px solid rgba(140,82,255,0.2);
 }
-.ncl-card-icon.script {
-  background: rgba(0,194,168,0.08);
-  border: 1px solid rgba(0,194,168,0.2);
-}
 .ncl-card-icon svg  { width: 16px; height: 16px; }
 .ncl-card-icon.prompt svg { stroke: #A855F7; }
-.ncl-card-icon.script svg { stroke: #2DD4BF; }
+
 
 .ncl-type-badge     {
   padding: 3px 9px;
@@ -566,11 +562,6 @@
   background: rgba(140,82,255,0.1);
   border: 1px solid rgba(140,82,255,0.25);
   color: #C084FC;
-}
-.ncl-type-badge.script {
-  background: rgba(0,194,168,0.08);
-  border: 1px solid rgba(0,194,168,0.2);
-  color: #2DD4BF;
 }
 .ncl-card-arrow     {
   margin-left: auto;
@@ -736,10 +727,9 @@
   display: grid; place-items: center; flex-shrink: 0;
 }
 .ncl-hero-icon.prompt { background: rgba(140,82,255,0.1); border: 1px solid rgba(140,82,255,0.25); }
-.ncl-hero-icon.script { background: rgba(0,194,168,0.08); border: 1px solid rgba(0,194,168,0.2); }
+
 .ncl-hero-icon svg  { width: 22px; height: 22px; }
 .ncl-hero-icon.prompt svg { stroke: #A855F7; }
-.ncl-hero-icon.script svg { stroke: #2DD4BF; }
 .ncl-hero-title     {
   font-size: clamp(1.375rem, 3.5vw, 1.875rem);
   font-weight: 800;

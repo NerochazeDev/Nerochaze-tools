@@ -35,9 +35,9 @@ export interface Tool {
   id: string;
   title: string;
   description: string;
-  category: "AI Prompt Matrices" | "Automation Bot Scripts";
+  category: "AI Prompt Matrices";
   tags: string[];
-  type: "prompt" | "script";
+  type: "prompt";
   instructions: string[];
   sampleCode: string;
   downloadUrl: string;
@@ -92,86 +92,6 @@ Without any conversational filler, immediately use your live data systems to fin
     downloadLabel: "📥 Download Full NicheFinder Pro (YT Automation) Prompt Matrix",
 },
 
-  {
-    id: "discord-asset-sizer",
-    title: "Automated Discord Asset-Sizer Bot",
-    description:
-      "Auto-resizes any image uploaded to Discord to perfect platform specs — banners, avatars, emojis, and stickers — using a single command.",
-    category: "Automation Bot Scripts",
-    tags: ["#Python-Scripts", "#Discord", "#Automation", "#Bot", "#Design", "#Assets"],
-    type: "script",
-    instructions: [
-      "Prerequisites: Python 3.9 or higher — download from python.org if not installed.",
-      "Open a terminal (Command Prompt on Windows, Terminal on Mac/Linux).",
-      "Install dependencies: pip install discord.py Pillow",
-      "Go to discord.com/developers/applications → click New Application → name it.",
-      "Click the Bot tab in the sidebar → click Reset Token → copy the token (keep it secret).",
-      "Scroll down and enable Message Content Intent under Privileged Gateway Intents.",
-      "Click OAuth2 → URL Generator → check 'bot' scope → check READ_MESSAGES, SEND_MESSAGES, ATTACH_FILES → open the generated URL to invite the bot to your server.",
-      "Download the full script using the button below.",
-      "Open the script file and replace YOUR_BOT_TOKEN with your actual token.",
-      "Save the file and run it: python asset_sizer_bot.py",
-      "In Discord, upload any image and type: !resize banner (or avatar, emoji, sticker, splash)",
-      "The bot replies with the correctly resized image as an attachment instantly.",
-    ],
-    sampleCode: `import discord
-  from discord.ext import commands
-  from PIL import Image
-  import io
-
-  TOKEN = "YOUR_BOT_TOKEN"
-
-  # Discord official asset size specifications
-  SIZES = {
-    "banner":  (960, 540),    # Server banner
-    "avatar":  (256, 256),    # Profile picture / server icon
-    "emoji":   (128, 128),    # Custom emoji
-    "sticker": (320, 320),    # Server sticker
-    "splash":  (1920, 1080),  # Invite splash screen
-  }
-
-  intents = discord.Intents.default()
-  intents.message_content = True
-  bot = commands.Bot(command_prefix="!", intents=intents)
-
-  @bot.event
-  async def on_ready():
-    print(f"[+] Asset-Sizer Bot online as {bot.user}")
-
-  @bot.command()
-  async def resize(ctx, asset_type: str = "avatar"):
-    """Usage: !resize [banner/avatar/emoji/sticker/splash]"""
-    if not ctx.message.attachments:
-        await ctx.send("Attach an image. Usage: !resize [banner/avatar/emoji/sticker]")
-        return
-
-    asset_type = asset_type.lower()
-    if asset_type not in SIZES:
-        options = ", ".join(SIZES.keys())
-        await ctx.send(f"Unknown type. Choose from: {options}")
-        return
-
-    attachment = ctx.message.attachments[0]
-    img_bytes = await attachment.read()
-    img = Image.open(io.BytesIO(img_bytes)).convert("RGBA")
-
-    target_size = SIZES[asset_type]
-    resized = img.resize(target_size, Image.LANCZOS)
-
-    output = io.BytesIO()
-    resized.save(output, format="PNG")
-    output.seek(0)
-
-    w, h = target_size
-    await ctx.send(
-        f"Resized to **{asset_type}** spec ({w}x{h}px)",
-        file=discord.File(output, filename=f"{asset_type}_resized.png")
-    )
-
-  bot.run(TOKEN)`,
-    downloadUrl: "https://shrinkme.io/placeholder-discord-asset-sizer",
-    downloadLabel: "📥 Download Free Automation Script (.py)",
-  },
  {
     id: "long-form-cinematic-continuity-engine",
     title: "The Long-Form Cinematic Continuity Engine",

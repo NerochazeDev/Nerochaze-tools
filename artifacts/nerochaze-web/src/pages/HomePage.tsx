@@ -10,13 +10,6 @@ function IconCPU({ size = 16, stroke = "currentColor" }: { size?: number; stroke
     </svg>
   );
 }
-function IconTerminal({ size = 16, stroke = "currentColor" }: { size?: number; stroke?: string }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={stroke} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="4 17 10 11 4 5" /><line x1="12" y1="19" x2="20" y2="19" />
-    </svg>
-  );
-}
 function IconSearch() {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -60,12 +53,10 @@ function ContentCard({ tool, onClick }: { tool: Tool; onClick: () => void }) {
   return (
     <button className="ncl-card" onClick={onClick} aria-label={`View ${tool.title}`}>
       <div className="ncl-card-header">
-        <div className={`ncl-card-icon ${tool.type}`} aria-hidden>
-          {tool.type === "prompt" ? <IconCPU /> : <IconTerminal />}
+        <div className="ncl-card-icon prompt" aria-hidden>
+          <IconCPU />
         </div>
-        <span className={`ncl-type-badge ${tool.type}`}>
-          {tool.type === "prompt" ? "Prompt Matrix" : "Bot Script"}
-        </span>
+        <span className="ncl-type-badge prompt">Prompt Matrix</span>
         <span className="ncl-card-arrow" aria-hidden>→</span>
       </div>
       <div className="ncl-card-title">{tool.title}</div>
@@ -92,14 +83,12 @@ function ContentCard({ tool, onClick }: { tool: Tool; onClick: () => void }) {
 
 /* ── HomePage ───────────────────────────────────────────────── */
 export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) => void }) {
-  const [search, setSearch]           = useState("");
-  const [activeType, setActiveType]   = useState<"all" | "prompt" | "script">("all");
-  const [activeTag, setActiveTag]     = useState<string | null>(null);
+  const [search, setSearch]               = useState("");
+  const [activeTag, setActiveTag]         = useState<string | null>(null);
   const [showTagFilters, setShowTagFilters] = useState(true);
 
   const filtered = useMemo(() => {
     let items = TOOLS;
-    if (activeType !== "all") items = items.filter((t) => t.type === activeType);
     if (activeTag) items = items.filter((t) => t.tags.includes(activeTag));
     if (search.trim()) {
       const q = search.toLowerCase();
@@ -112,12 +101,9 @@ export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) 
       );
     }
     return items;
-  }, [search, activeType, activeTag]);
+  }, [search, activeTag]);
 
-  const prompts      = filtered.filter((t) => t.type === "prompt");
-  const scripts      = filtered.filter((t) => t.type === "script");
-  const totalPrompts = TOOLS.filter((t) => t.type === "prompt").length;
-  const totalScripts = TOOLS.filter((t) => t.type === "script").length;
+  const totalPrompts = TOOLS.length;
 
   return (
     <div className="ncl-page">
@@ -144,7 +130,7 @@ export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) 
               <input
                 type="search"
                 className="ncl-search"
-                placeholder="Search prompts, scripts, tags..."
+                placeholder="Search prompts, tags..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 aria-label="Search content"
@@ -178,8 +164,7 @@ export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) 
             <hr className="ncl-hero-rule" aria-hidden />
 
             <p className="ncl-hero-tagline">
-              <strong>Premium AI Prompt Matrices</strong> and{" "}
-              <strong>Automation Bot Scripts</strong> for builders,
+              <strong>Premium AI Prompt Matrices</strong> for builders,
               creators, and operators.
             </p>
 
@@ -189,11 +174,7 @@ export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) 
                 <div className="ncl-stat-pill-label">Prompt Matrices</div>
               </div>
               <div className="ncl-stat-pill">
-                <div className="ncl-stat-pill-val">{totalScripts}</div>
-                <div className="ncl-stat-pill-label">Bot Scripts</div>
-              </div>
-              <div className="ncl-stat-pill">
-                <div className="ncl-stat-pill-val">{TOOLS.length}</div>
+                <div className="ncl-stat-pill-val">{totalPrompts}</div>
                 <div className="ncl-stat-pill-label">Total Releases</div>
               </div>
             </div>
@@ -210,20 +191,8 @@ export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) 
         <div className="ncl-container">
 
           <div className="ncl-filters" role="group" aria-label="Filter content">
-            {(["all", "prompt", "script"] as const).map((f) => (
-              <button
-                key={f}
-                className={`ncl-filter-btn${activeType === f ? " active" : ""}`}
-                onClick={() => setActiveType(f)}
-                aria-pressed={activeType === f}
-              >
-                {f === "all" ? "All" : f === "prompt" ? "Prompt Matrices" : "Bot Scripts"}
-              </button>
-            ))}
-
             {ALL_TAGS.length > 0 && (
               <>
-                <div className="ncl-filter-divider" aria-hidden />
                 <button
                   className={`ncl-filter-btn ncl-hashtag-toggle${showTagFilters ? " active" : ""}`}
                   onClick={() => { setShowTagFilters((v) => !v); if (showTagFilters) setActiveTag(null); }}
@@ -250,34 +219,17 @@ export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) 
             )}
           </div>
 
-          {prompts.length > 0 && (
+          {filtered.length > 0 && (
             <>
               <div className="ncl-section-head">
                 <span className="ncl-section-head-icon" aria-hidden>
                   <IconCPU size={15} stroke="#8C52FF" />
                 </span>
                 <h2>AI Prompt Matrices</h2>
-                <span className="ncl-count-badge">{prompts.length}</span>
+                <span className="ncl-count-badge">{filtered.length}</span>
               </div>
               <div className="ncl-grid">
-                {prompts.map((tool) => (
-                  <ContentCard key={tool.id} tool={tool} onClick={() => onSelectTool(tool.id)} />
-                ))}
-              </div>
-            </>
-          )}
-
-          {scripts.length > 0 && (
-            <>
-              <div className="ncl-section-head">
-                <span className="ncl-section-head-icon" aria-hidden>
-                  <IconTerminal size={15} stroke="#2DD4BF" />
-                </span>
-                <h2>Automation Bot Scripts</h2>
-                <span className="ncl-count-badge">{scripts.length}</span>
-              </div>
-              <div className="ncl-grid">
-                {scripts.map((tool) => (
+                {filtered.map((tool) => (
                   <ContentCard key={tool.id} tool={tool} onClick={() => onSelectTool(tool.id)} />
                 ))}
               </div>
@@ -302,7 +254,7 @@ export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) 
             <span className="ncl-footer-sep" aria-hidden>·</span>
             <span className="ncl-footer-sub">Creative Labs</span>
           </div>
-          <p>AI Prompts &amp; Automation Scripts</p>
+          <p>Premium AI Prompt Matrices</p>
         </div>
       </footer>
     </div>
