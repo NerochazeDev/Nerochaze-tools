@@ -40,11 +40,8 @@ function LogoMark({ size = 34 }: { size?: number }) {
           <stop offset="100%" stopColor="rgba(220,195,255,0.85)" />
         </linearGradient>
       </defs>
-      {/* Rounded square background */}
       <rect width="34" height="34" rx="9.5" fill="url(#ncl-logo-grad)" />
-      {/* Subtle inner light at top */}
       <rect width="34" height="17" rx="9.5" fill="url(#ncl-logo-grad)" opacity="0.3" />
-      {/* N letterform */}
       <path
         d="M10 25V9L24 25V9"
         stroke="url(#ncl-logo-n)"
@@ -58,6 +55,8 @@ function LogoMark({ size = 34 }: { size?: number }) {
 
 /* ── Content card ───────────────────────────────────────────── */
 function ContentCard({ tool, onClick }: { tool: Tool; onClick: () => void }) {
+  const [showTags, setShowTags] = useState(true);
+
   return (
     <button className="ncl-card" onClick={onClick} aria-label={`View ${tool.title}`}>
       <div className="ncl-card-header">
@@ -72,7 +71,18 @@ function ContentCard({ tool, onClick }: { tool: Tool; onClick: () => void }) {
       <div className="ncl-card-title">{tool.title}</div>
       <div className="ncl-card-desc">{tool.description}</div>
       <div className="ncl-tag-row">
-        {tool.tags.slice(0, 4).map((tag) => (
+        <button
+          className="ncl-tag-toggle-chip"
+          onClick={(e) => { e.stopPropagation(); setShowTags((v) => !v); }}
+          aria-label={showTags ? "Hide hashtags" : "Show hashtags"}
+          aria-expanded={showTags}
+        >
+          <span>#</span>
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ transition: "transform 0.2s", transform: showTags ? "rotate(180deg)" : "rotate(0deg)" }}>
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
+        {showTags && tool.tags.slice(0, 4).map((tag) => (
           <span key={tag} className="ncl-tag">{tag}</span>
         ))}
       </div>
@@ -82,9 +92,10 @@ function ContentCard({ tool, onClick }: { tool: Tool; onClick: () => void }) {
 
 /* ── HomePage ───────────────────────────────────────────────── */
 export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) => void }) {
-  const [search, setSearch]     = useState("");
-  const [activeType, setActiveType] = useState<"all" | "prompt" | "script">("all");
-  const [activeTag, setActiveTag]   = useState<string | null>(null);
+  const [search, setSearch]           = useState("");
+  const [activeType, setActiveType]   = useState<"all" | "prompt" | "script">("all");
+  const [activeTag, setActiveTag]     = useState<string | null>(null);
+  const [showTagFilters, setShowTagFilters] = useState(true);
 
   const filtered = useMemo(() => {
     let items = TOOLS;
@@ -121,7 +132,10 @@ export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) 
               <LogoMark size={34} />
               <div className="ncl-brand-text">
                 <span className="ncl-brand-name">NEROCHAZE</span>
-                <span className="ncl-brand-sub">Creative Labs</span>
+                <div className="ncl-brand-sub-row">
+                  <span className="ncl-brand-dot" aria-hidden />
+                  <span className="ncl-brand-sub">Creative Labs</span>
+                </div>
               </div>
             </a>
 
@@ -154,7 +168,11 @@ export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) 
 
             <div className="ncl-wordmark-wrap">
               <span className="ncl-wordmark-main" aria-label="NEROCHAZE">NEROCHAZE</span>
-              <span className="ncl-wordmark-sub">Creative&nbsp;Labs</span>
+              <div className="ncl-wordmark-sub-wrap">
+                <span className="ncl-wordmark-rule-left" aria-hidden />
+                <span className="ncl-wordmark-sub">Creative&nbsp;Labs</span>
+                <span className="ncl-wordmark-rule-right" aria-hidden />
+              </div>
             </div>
 
             <hr className="ncl-hero-rule" aria-hidden />
@@ -202,17 +220,34 @@ export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) 
                 {f === "all" ? "All" : f === "prompt" ? "Prompt Matrices" : "Bot Scripts"}
               </button>
             ))}
-            {ALL_TAGS.length > 0 && <div className="ncl-filter-divider" aria-hidden />}
-            {ALL_TAGS.map((tag) => (
-              <button
-                key={tag}
-                className={`ncl-filter-btn${activeTag === tag ? " active" : ""}`}
-                onClick={() => setActiveTag(activeTag === tag ? null : tag)}
-                aria-pressed={activeTag === tag}
-              >
-                {tag}
-              </button>
-            ))}
+
+            {ALL_TAGS.length > 0 && (
+              <>
+                <div className="ncl-filter-divider" aria-hidden />
+                <button
+                  className={`ncl-filter-btn ncl-hashtag-toggle${showTagFilters ? " active" : ""}`}
+                  onClick={() => { setShowTagFilters((v) => !v); if (showTagFilters) setActiveTag(null); }}
+                  aria-expanded={showTagFilters}
+                  aria-label="Toggle hashtag filters"
+                >
+                  <span># Tags</span>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ transition: "transform 0.2s", transform: showTagFilters ? "rotate(180deg)" : "rotate(0deg)" }}>
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </button>
+
+                {showTagFilters && ALL_TAGS.map((tag) => (
+                  <button
+                    key={tag}
+                    className={`ncl-filter-btn${activeTag === tag ? " active" : ""}`}
+                    onClick={() => setActiveTag(activeTag === tag ? null : tag)}
+                    aria-pressed={activeTag === tag}
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </>
+            )}
           </div>
 
           {prompts.length > 0 && (
@@ -264,8 +299,10 @@ export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) 
           <div className="ncl-footer-brand">
             <LogoMark size={20} />
             <span className="ncl-footer-name">NEROCHAZE</span>
+            <span className="ncl-footer-sep" aria-hidden>·</span>
+            <span className="ncl-footer-sub">Creative Labs</span>
           </div>
-          <p>Creative Labs — AI Prompts &amp; Automation Scripts</p>
+          <p>AI Prompts &amp; Automation Scripts</p>
         </div>
       </footer>
     </div>

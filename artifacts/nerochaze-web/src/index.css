@@ -181,14 +181,29 @@
   0%, 100% { background-position: 0% 50%; }
   50%       { background-position: 100% 50%; }
 }
+.ncl-brand-sub-row  {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 3px;
+}
+.ncl-brand-dot      {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(140,82,255,0.7);
+  flex-shrink: 0;
+}
 .ncl-brand-sub      {
   font-size: 0.6rem;
-  font-weight: 500;
-  color: rgba(255,255,255,0.3);
-  letter-spacing: 0.12em;
+  font-weight: 600;
+  background: linear-gradient(90deg, rgba(192,132,252,0.7), rgba(140,82,255,0.5));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   line-height: 1;
-  margin-top: 3px;
 }
 
 /* Search */
@@ -322,14 +337,34 @@
   0%, 100% { background-position: 0% 50%; }
   50%       { background-position: 100% 50%; }
 }
+.ncl-wordmark-sub-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+.ncl-wordmark-rule-left,
+.ncl-wordmark-rule-right {
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(140,82,255,0.35));
+}
+.ncl-wordmark-rule-right {
+  background: linear-gradient(90deg, rgba(140,82,255,0.35), transparent);
+}
 .ncl-wordmark-sub   {
   display: block;
-  font-size: clamp(0.75rem, 2vw, 1.1rem);
-  font-weight: 300;
-  letter-spacing: 0.40em;
+  font-size: clamp(0.7rem, 2vw, 1rem);
+  font-weight: 400;
+  letter-spacing: 0.45em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.28);
-  margin-top: 10px;
+  background: linear-gradient(90deg, rgba(192,132,252,0.55), rgba(220,180,255,0.75), rgba(192,132,252,0.55));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  white-space: nowrap;
 }
 
 /* Gradient accent rule */
@@ -560,7 +595,36 @@
   line-height: 1.6;
   flex: 1;
 }
-.ncl-tag-row        { display: flex; flex-wrap: wrap; gap: 5px; }
+/* Hashtag toggle chip (cards + detail page) */
+.ncl-tag-toggle-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: rgba(140,82,255,0.08);
+  border: 1px solid rgba(140,82,255,0.22);
+  color: rgba(192,132,252,0.75);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.18s, border-color 0.18s, color 0.18s;
+}
+.ncl-tag-toggle-chip:hover {
+  background: rgba(140,82,255,0.15);
+  border-color: rgba(140,82,255,0.45);
+  color: #C084FC;
+}
+
+/* Hashtag toggle in filter bar */
+.ncl-hashtag-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ncl-tag-row        { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
 .ncl-tag            {
   padding: 2px 8px;
   border-radius: 4px;
@@ -593,11 +657,24 @@
 .ncl-footer-name    {
   font-size: 0.875rem;
   font-weight: 800;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.06em;
   background: linear-gradient(90deg, #C084FC, #8C52FF);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+.ncl-footer-sep     {
+  font-size: 0.75rem;
+  color: rgba(140,82,255,0.5);
+  font-weight: 700;
+  line-height: 1;
+}
+.ncl-footer-sub     {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(192,132,252,0.45);
 }
 .ncl-footer p       {
   font-size: 0.75rem;
@@ -677,6 +754,7 @@
   line-height: 1.7;
   margin-bottom: 18px;
 }
+.ncl-hero-tags-wrap { display: flex; flex-direction: column; gap: 10px; }
 .ncl-hero-tags      { display: flex; flex-wrap: wrap; gap: 6px; }
 .ncl-hero-tag       {
   padding: 3px 9px; border-radius: 5px; font-size: 0.72rem;

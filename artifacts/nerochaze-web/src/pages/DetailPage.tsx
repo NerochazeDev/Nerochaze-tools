@@ -74,11 +74,6 @@ function TypeIcon({ type }: { type: Tool["type"] }) {
 }
 
 /* ── Adsterra 728×90 Banner ──────────────────────────────────── */
-/*
-  Each banner runs inside its own srcdoc iframe so the ad scripts
-  have a real document context — dynamic script injection causes
-  document.currentScript to be null, which breaks multi-placement.
-*/
 const AD_BANNER_HTML = `<!DOCTYPE html>
 <html>
 <head>
@@ -117,9 +112,10 @@ function AdBanner() {
 
 /* ── Detail page ─────────────────────────────────────────────── */
 export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () => void }) {
-  const isPrompt  = tool.type === "prompt";
-  const features  = isPrompt ? PROMPT_FEATURES : SCRIPT_FEATURES;
+  const isPrompt   = tool.type === "prompt";
+  const features   = isPrompt ? PROMPT_FEATURES : SCRIPT_FEATURES;
   const sampleLang = isPrompt ? "PROMPT" : "PYTHON";
+  const [showTags, setShowTags] = useState(true);
 
   const midpoint    = Math.ceil(tool.instructions.length / 2);
   const stepsTop    = tool.instructions.slice(0, midpoint);
@@ -157,10 +153,27 @@ export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () =>
           </div>
           <h1 className="ncl-hero-title">{tool.title}</h1>
           <p className="ncl-hero-desc">{tool.description}</p>
-          <div className="ncl-hero-tags">
-            {tool.tags.map((tag) => (
-              <span key={tag} className="ncl-hero-tag">{tag}</span>
-            ))}
+
+          {/* Tags with toggle */}
+          <div className="ncl-hero-tags-wrap">
+            <button
+              className="ncl-tag-toggle-chip"
+              onClick={() => setShowTags((v) => !v)}
+              aria-label={showTags ? "Hide hashtags" : "Show hashtags"}
+              aria-expanded={showTags}
+            >
+              <span>#</span>
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ transition: "transform 0.2s", transform: showTags ? "rotate(180deg)" : "rotate(0deg)" }}>
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            {showTags && (
+              <div className="ncl-hero-tags">
+                {tool.tags.map((tag) => (
+                  <span key={tag} className="ncl-hero-tag">{tag}</span>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
@@ -173,10 +186,8 @@ export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () =>
             <h2 id="section-a-heading" className="ncl-section-title">Technical Guide</h2>
           </div>
 
-          {/* ADSTERRA BANNER — TOP */}
           <AdBanner />
 
-          {/* Steps — first half */}
           <div className="ncl-instructions-card">
             <ol className="ncl-step-list" aria-label="Step-by-step instructions (part 1)">
               {stepsTop.map((step, i) => (
@@ -188,10 +199,8 @@ export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () =>
             </ol>
           </div>
 
-          {/* ADSTERRA BANNER — MID STEPS */}
           <AdBanner />
 
-          {/* Steps — second half */}
           {stepsBottom.length > 0 && (
             <div className="ncl-instructions-card">
               <ol className="ncl-step-list" aria-label="Step-by-step instructions (part 2)" start={midpoint + 1}>
@@ -205,7 +214,6 @@ export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () =>
             </div>
           )}
 
-          {/* ADSTERRA BANNER — MIDDLE (after all steps) */}
           <AdBanner />
         </section>
 
@@ -299,7 +307,6 @@ export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () =>
           </div>
         </section>
 
-        {/* ADSTERRA BANNER — BOTTOM */}
         <AdBanner />
 
       </main>
