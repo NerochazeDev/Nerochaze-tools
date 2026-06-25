@@ -56,40 +56,52 @@ export const TOOLS: Tool[] = [
 
   // ─── Existing tools below — do not remove ───────────────────────
 {
-    id: "nichefinder-pro-yt-automation",
-    title: "NicheFinder Pro (YT Automation)",
+    id: "transcript-logic-engine",
+    title: "Transcript Logic Engine",
     description:
-      "Conduct a real-time, high-performance market analysis for faceless YouTube Shorts channels. Mine live viral data from the last 15-30 days, deconstruct algorithm retention triggers, and automatically construct a turnkey blueprint for your chosen niche.",
+      "Reverse-engineer viral YouTube videos into production-ready scripts. Automatically extracts verbatim transcripts, scrubs vocal fillers, maps visual/editing cues, and isolates the 'Information Gap' that drives audience retention.",
     category: "AI Prompt Matrices",
-    tags: ["#YouTube-Automation", "#Niche-Research", "#YouTube-Shorts", "#Faceless-Channel", "#Trend-Hijacking", "#Algorithmic-Growth"],
+    tags: ["#Script-Engineering", "#Transcript-Extraction", "#Video-Editing", "#YouTube-Strategy", "#Retention-Optimization", "#Reverse-Engineering"],
     type: "prompt",
     instructions: [
-      "Prerequisites: Open a completely fresh, blank chat window inside Gemini (Pro or Advanced) to ensure full computational focus for real-time web scraping and live data extraction.",
-      "Copy the entire master prompt from the preview sample block below, paste it directly into your clean Gemini chat, and hit send.",
-      "Review the live leaderboard table generated immediately at the top of the chat, tracking 10 of the most viral YouTube Shorts from the last 15 to 30 days that crossed over 1,000,000+ views.",
-      "Study Phase 2's algorithmic and behavioral breakdowns right beneath the table to understand the exact psychological tricks forcing users to freeze their thumbs on those specific videos.",
-      "Examine the 'HOT RECOMMENDATIONS' section highlighting two high-potential niches tailored for automated channels, optimizing for high ad payouts (RPM) and premium 8K asset setups.",
-      "Observe the strict hard stop rule where Gemini pauses and asks: 'Which number (1-10) or niche from the list above are you most interested in pursuing for an automation channel?'",
-      "Reply directly into the chat with your selected number or niche name (e.g., 'Let's execute number 4') to unlock the deep build phase.",
-      "Copy the custom-generated 30-second vertical video script, paying close attention to how the ending line anchors back to the opening hook for an infinite watch-time loop.",
-      "Extract the detailed 8K image generation asset prompts. If you chose an architectural or building niche, notice how all human workers, machinery, and cranes have been strictly stripped out.",
-      "Apply the end-to-end channel setup guide by copying the default SEO tags and keywords directly into your YouTube Studio upload defaults.",
-      "Deploy the custom video description template provided by Gemini to systematically bypass the initial algorithm sandbox and accelerate your channel indexing.",
-      "Lock the generated 30-day posting cadence schedule into your production calendar to maintain maximum content velocity during your launch window.",
+      "Prerequisites: Open a fresh, blank chat window in Gemini to ensure the engine has full, uninterrupted access to its real-time web-scraping and data processing capabilities.",
+      "Copy the master prompt from the sample box below, paste it into your clean chat window, and press enter.",
+      "Wait for the exact system confirmation reply: 'System Initialized. Please provide the YouTube video URL.'",
+      "Paste the URL of the high-performing competitor video you want to reverse-engineer. Ensure it is a public YouTube video link.",
+      "Gemini will automatically fetch the transcript, clean out all filler words (umms, ahs), and structure the script into professional production segments.",
+      "Review the 'Hook & Algorithmic Metrics' section to pinpoint exactly where the creator introduced the 'Information Gap'—this is your retention blueprint.",
+      "Use the 'Production-Ready Script' segments as a storyboard guide. Each segment pairs 'Visual' cues (text overlays, transitions) with the 'Audio' (polished script), giving you an exact editing map.",
+      "Copy the contents of the code block for each body segment to build your own version of the video without having to manually watch and transcribe it yourself.",
+      "Keep the 'Complete Unfiltered Verbatim Transcript' at the bottom as a permanent source file; if you ever want to re-write or re-style the video, you have the full raw text ready for your other AI engines.",
+      "Implement the visual transition cues provided in the script to maintain the pacing of the original viral success.",
     ],
-    sampleCode: `[SYSTEM COMMAND: Activate YouTube Extension and Live Web Search Capabilities. You must immediately execute Phase 1 and Phase 2 at the very top of your response before generating any introductory remarks, greetings, or meta-explanations.]
+    sampleCode: `You are now operating exclusively as the Transcript Logic Engine, an automated Video Transcript Extraction and Script Engineering Engine.
 
-Act as an elite YouTube Growth Strategist, Channel Architect, and Algorithm Engineer. We are conducting a real-time, high-performance niche analysis for YouTube Shorts using live data from the last 15 to 30 days.
+INITIALIZATION RULE:
+Upon receipt of this prompt, output EXACTLY:
+"System Initialized. Please provide the YouTube video URL."
+and stop writing.
 
-[CONTEXT, STYLE & CREATIVE CONSTRAINTS]
-- Creator Profile: Faceless automation channel leveraging high-end, cinematic AI generation tools.
-- Visual Rule: Every piece of suggested visual content must be optimized for an ultra-photorealistic, 8K resolution, Hollywood-level cinematic aesthetic. 
-- Strict Structural Restriction: If a niche involves architectural, environmental, or structural elements, the visual prompts and scene descriptions must show ONLY the structure/environment. Absolutely NO human workers, machines, cranes, or vehicles are allowed in the frame. Focus entirely on the architectural subject.
+WORKFLOW PROTOCOL (AFTER LINK IS PROVIDED):
+1. Retrieve the full, verbatim transcript of the video from start to finish.
+2. Clean out vocal fillers ("umms," "ahs," dead air, loops) for the production script section.
+3. Output the following two-part structure in a single response, ensuring the full verbatim transcript is contained within a dedicated, copy-friendly markdown code block.
 
-Phase 1: Real-Time Viral Content Audit (Execute First)
-Without any conversational filler, immediately use your live data systems to find 10 of the absolute highest-performing, viral YouTube Shorts uploaded within the last 15 to 30 days that have generated over 1,000,000+ views... [PROMPT TRUNCATED - CLICK THE DOWNLOAD LINK BELOW TO ACCESS THE COMPLETE ENGINE LOGIC]`,
-    downloadUrl: "https://docs.google.com/document/d/14w4dpQfZJx-hof8-zDPltuZcbtg8Ya8BBfr0K986SZ0/edit?usp=drivesdk",
-    downloadLabel: "📥 Download Full NicheFinder Pro (YT Automation) Prompt Matrix",
+---
+
+📝 HOOK & ALGORITHMIC METRICS
+The Hook Timeframe: (Exact verbatim opening sentence and timestamp where the hook ends).
+The Information Gap: (The exact sentence where the primary tension or question is introduced).
+
+📋 PRODUCTION-READY SCRIPT (CLICK COPY TO CLIPBOARD)
+
+[Visual and Audio segmentation logic applied here...]
+
+📑 COMPLETE UNFILTERED VERBATIM TRANSCRIPT (CLICK COPY TO CLIPBOARD)
+
+(Insert the entire, full-length sequential transcript text here with its original timestamps from start to finish without omitting any lines.)`,
+    downloadUrl: "https://docs.google.com/document/d/14HMp3nZt8L304oz1STv4APlnAocT0mE4cgGiNH3VxRc/edit?usp=drivesdk",
+    downloadLabel: "📥 Download Full Transcript Logic Engine Matrix",
 },
   {
     id: "nichefinder-pro-yt-automation",
