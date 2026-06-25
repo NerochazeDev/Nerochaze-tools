@@ -88,7 +88,7 @@ Act as an elite YouTube Growth Strategist, Channel Architect, and Algorithm Engi
 
 Phase 1: Real-Time Viral Content Audit (Execute First)
 Without any conversational filler, immediately use your live data systems to find 10 of the absolute highest-performing, viral YouTube Shorts uploaded within the last 15 to 30 days that have generated over 1,000,000+ views... [PROMPT TRUNCATED - CLICK THE DOWNLOAD LINK BELOW TO ACCESS THE COMPLETE ENGINE LOGIC]`,
-    downloadUrl: "https://docs.google.com/document/d/14HMp3nZt8L304oz1STv4APlnAocT0mE4cgGiNH3VxRc/edit?usp=drivesdk",
+    downloadUrl: "https://docs.google.com/document/d/14w4dpQfZJx-hof8-zDPltuZcbtg8Ya8BBfr0K986SZ0/edit?usp=drivesdk",
     downloadLabel: "📥 Download Full NicheFinder Pro (YT Automation) Prompt Matrix",
 },
 
