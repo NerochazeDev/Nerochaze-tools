@@ -308,12 +308,18 @@
 .ncl-wordmark-main  {
   display: block;
   font-family: 'Nunito', sans-serif;
-  font-size: clamp(3.5rem, 9vw, 6.5rem);
+  font-size: clamp(4.2rem, 11vw, 8rem);
   font-weight: 900;
-  letter-spacing: -0.01em;
-  color: #8C52FF;
+  letter-spacing: 0.01em;
   line-height: 0.95;
   margin-bottom: 10px;
+  background: linear-gradient(135deg, #FFD700 0%, #D4A0FF 45%, #8C52FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 4px 18px rgba(140, 82, 255, 0.45))
+          drop-shadow(0 1px 0px rgba(255, 215, 0, 0.3));
+  -webkit-text-stroke: 0.5px rgba(200, 160, 255, 0.15);
 }
 .ncl-wordmark-sub-wrap {
   display: flex;
