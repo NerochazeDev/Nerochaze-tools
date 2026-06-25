@@ -308,9 +308,9 @@
 .ncl-wordmark-main  {
   display: block;
   font-family: 'Nunito', sans-serif;
-  font-size: clamp(4.2rem, 11vw, 8rem);
+  font-size: clamp(2.8rem, 7.5vw, 6rem);
   font-weight: 900;
-  letter-spacing: 0.01em;
+  letter-spacing: -0.02em;
   line-height: 0.95;
   margin-bottom: 10px;
   background: linear-gradient(135deg, #FFD700 0%, #D4A0FF 45%, #8C52FF 100%);
