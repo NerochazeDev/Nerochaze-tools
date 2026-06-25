@@ -107,7 +107,7 @@ function AdBanner() {
 /* ── Detail page ─────────────────────────────────────────────── */
 export default function DetailPage({ tool, onBack }: { tool: Tool; onBack: () => void }) {
   const features   = PROMPT_FEATURES;
-  const [showTags, setShowTags] = useState(true);
+  const [showTags, setShowTags] = useState(false);
 
   const midpoint    = Math.ceil(tool.instructions.length / 2);
   const stepsTop    = tool.instructions.slice(0, midpoint);

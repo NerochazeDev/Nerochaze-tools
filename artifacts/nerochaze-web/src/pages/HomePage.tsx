@@ -48,7 +48,7 @@ function LogoMark({ size = 34 }: { size?: number }) {
 
 /* ── Content card ───────────────────────────────────────────── */
 function ContentCard({ tool, onClick }: { tool: Tool; onClick: () => void }) {
-  const [showTags, setShowTags] = useState(true);
+  const [showTags, setShowTags] = useState(false);
 
   return (
     <button className="ncl-card" onClick={onClick} aria-label={`View ${tool.title}`}>
@@ -85,7 +85,7 @@ function ContentCard({ tool, onClick }: { tool: Tool; onClick: () => void }) {
 export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) => void }) {
   const [search, setSearch]               = useState("");
   const [activeTag, setActiveTag]         = useState<string | null>(null);
-  const [showTagFilters, setShowTagFilters] = useState(true);
+  const [showTagFilters, setShowTagFilters] = useState(false);
 
   const filtered = useMemo(() => {
     let items = TOOLS;
