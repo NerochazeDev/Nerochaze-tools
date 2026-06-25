@@ -1,6 +1,43 @@
 import { useState, useMemo } from "react";
 import { TOOLS, ALL_TAGS, type Tool } from "../data";
 
+/* ── Ad Banner ──────────────────────────────────────────────── */
+const AD_BANNER_HTML = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <style>*{margin:0;padding:0;overflow:hidden;}</style>
+</head>
+<body>
+  <script>
+    atOptions = {
+      'key'    : '62f011d86f9c397482c478d82c85d03b',
+      'format' : 'iframe',
+      'height' : 90,
+      'width'  : 728,
+      'params' : {}
+    };
+  </script>
+  <script src="https://www.highperformanceformat.com/62f011d86f9c397482c478d82c85d03b/invoke.js"></script>
+</body>
+</html>`;
+
+function AdBanner() {
+  return (
+    <div className="ncl-ad-banner" aria-label="Advertisement">
+      <iframe
+        srcDoc={AD_BANNER_HTML}
+        width={728}
+        height={90}
+        frameBorder={0}
+        scrolling="no"
+        style={{ border: "none", display: "block", maxWidth: "100%" }}
+        title="Advertisement"
+      />
+    </div>
+  );
+}
+
 /* ── Icons ─────────────────────────────────────────────────── */
 function IconCPU({ size = 16, stroke = "currentColor" }: { size?: number; stroke?: string }) {
   return (
@@ -233,6 +270,7 @@ export default function HomePage({ onSelectTool }: { onSelectTool: (id: string) 
                   <ContentCard key={tool.id} tool={tool} onClick={() => onSelectTool(tool.id)} />
                 ))}
               </div>
+              <AdBanner />
             </>
           )}
 
