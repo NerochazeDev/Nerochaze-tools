@@ -91,7 +91,42 @@ Without any conversational filler, immediately use your live data systems to fin
     downloadUrl: "https://docs.google.com/document/d/14w4dpQfZJx-hof8-zDPltuZcbtg8Ya8BBfr0K986SZ0/edit?usp=drivesdk",
     downloadLabel: "📥 Download Full NicheFinder Pro (YT Automation) Prompt Matrix",
 },
+  {
+    id: "nichefinder-pro-yt-automation",
+    title: "NicheFinder Pro (YT Automation)",
+    description:
+      "Conduct a real-time, high-performance market analysis for faceless YouTube Shorts channels. Mine live viral data from the last 15-30 days, deconstruct algorithm retention triggers, and automatically construct a turnkey blueprint for your chosen niche.",
+    category: "AI Prompt Matrices",
+    tags: ["#YouTube-Automation", "#Niche-Research", "#YouTube-Shorts", "#Faceless-Channel", "#Trend-Hijacking", "#Algorithmic-Growth"],
+    type: "prompt",
+    instructions: [
+      "Prerequisites: Open a completely fresh, blank chat window inside Gemini (Pro or Advanced) to ensure full computational focus for real-time web scraping and live data extraction.",
+      "Copy the entire master prompt from the preview sample block below, paste it directly into your clean Gemini chat, and hit send.",
+      "Review the live leaderboard table generated immediately at the top of the chat, tracking 10 of the most viral YouTube Shorts from the last 15 to 30 days that crossed over 1,000,000+ views.",
+      "Study Phase 2's algorithmic and behavioral breakdowns right beneath the table to understand the exact psychological tricks forcing users to freeze their thumbs on those specific videos.",
+      "Examine the 'HOT RECOMMENDATIONS' section highlighting two high-potential niches tailored for automated channels, optimizing for high ad payouts (RPM) and premium 8K asset setups.",
+      "Observe the strict hard stop rule where Gemini pauses and asks: 'Which number (1-10) or niche from the list above are you most interested in pursuing for an automation channel?'",
+      "Reply directly into the chat with your selected number or niche name (e.g., 'Let's execute number 4') to unlock the deep build phase.",
+      "Copy the custom-generated 30-second vertical video script, paying close attention to how the ending line anchors back to the opening hook for an infinite watch-time loop.",
+      "Extract the detailed 8K image generation asset prompts. If you chose an architectural or building niche, notice how all human workers, machinery, and cranes have been strictly stripped out.",
+      "Apply the end-to-end channel setup guide by copying the default SEO tags and keywords directly into your YouTube Studio upload defaults.",
+      "Deploy the custom video description template provided by Gemini to systematically bypass the initial algorithm sandbox and accelerate your channel indexing.",
+      "Lock the generated 30-day posting cadence schedule into your production calendar to maintain maximum content velocity during your launch window.",
+    ],
+    sampleCode: `[SYSTEM COMMAND: Activate YouTube Extension and Live Web Search Capabilities. You must immediately execute Phase 1 and Phase 2 at the very top of your response before generating any introductory remarks, greetings, or meta-explanations.]
 
+  Act as an elite YouTube Growth Strategist, Channel Architect, and Algorithm Engineer. We are conducting a real-time, high-performance niche analysis for YouTube Shorts using live data from the last 15 to 30 days.
+
+  [CONTEXT, STYLE & CREATIVE CONSTRAINTS]
+  - Creator Profile: Faceless automation channel leveraging high-end, cinematic AI generation tools.
+  - Visual Rule: Every piece of suggested visual content must be optimized for an ultra-photorealistic, 8K resolution, Hollywood-level cinematic aesthetic. 
+  - Strict Structural Restriction: If a niche involves architectural, environmental, or structural elements, the visual prompts and scene descriptions must show ONLY the structure/environment. Absolutely NO human workers, machines, cranes, or vehicles are allowed in the frame. Focus entirely on the architectural subject.
+
+  Phase 1: Real-Time Viral Content Audit (Execute First)
+  Without any conversational filler, immediately use your live data systems to find 10 of the absolute highest-performing, viral YouTube Shorts uploaded within the last 15 to 30 days that have generated over 1,000,000+ views... [PROMPT TRUNCATED - CLICK THE DOWNLOAD LINK BELOW TO ACCESS THE COMPLETE ENGINE LOGIC]`,
+    downloadUrl: "https://docs.google.com/document/d/14w4dpQfZJx-hof8-zDPltuZcbtg8Ya8BBfr0K986SZ0/edit?usp=drivesdk",
+    downloadLabel: "📥 Download Full NicheFinder Pro (YT Automation) Prompt Matrix",
+  },
  {
     id: "long-form-cinematic-continuity-engine",
     title: "The Long-Form Cinematic Continuity Engine",

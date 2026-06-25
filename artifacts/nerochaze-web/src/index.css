@@ -310,32 +310,9 @@
   font-size: clamp(3.5rem, 9vw, 6.5rem);
   font-weight: 900;
   letter-spacing: -0.03em;
-  background: linear-gradient(
-    105deg,
-    #ffffff  0%,
-    #f5ecff 12%,
-    #e0c5ff 26%,
-    #c084fc 40%,
-    #8c52ff 54%,
-    #6b2fcc 64%,
-    #a87fff 78%,
-    #f0e6ff 90%,
-    #ffffff 100%
-  );
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #4F8EF7;
   line-height: 0.9;
   margin-bottom: 10px;
-  animation: ncl-shimmer-word 9s ease-in-out infinite;
-  filter:
-    drop-shadow(0 0 70px rgba(140, 82, 255, 0.32))
-    drop-shadow(0 0 24px rgba(192, 132, 252, 0.22));
-}
-@keyframes ncl-shimmer-word {
-  0%, 100% { background-position: 0% 50%; }
-  50%       { background-position: 100% 50%; }
 }
 .ncl-wordmark-sub-wrap {
   display: flex;
